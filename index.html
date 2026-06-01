@@ -1,708 +1,392 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francisco Orellana | Servicios freelance</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olivacraft — Estudio boutique de diseño y desarrollo digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-    <a href="#main-content" class="skip-link">
-        Saltar al contenido principal
-    </a>
 
-    <!-- HEADER -->
-    <header id="header" class="site-header">
-        <div class="container">
-            <div class="site-header__layout">
+  <!-- NAV -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="#" class="wordmark" aria-label="Olivacraft">
+        <span class="wm-oliva">Oliva</span><span class="wm-craft">craft</span><span class="wm-dot">·</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#casos">Casos</a></li>
+        <li><a href="#estudio">Estudio</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a href="#contacto" class="btn btn-primary nav-cta">Conversemos</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="nav-mobile" aria-hidden="true">
+      <ul role="list">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#casos">Casos</a></li>
+        <li><a href="#estudio">Estudio</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a href="#contacto" class="btn btn-primary">Conversemos</a>
+    </div>
+  </header>
 
-                <a href="#hero" class="site-header__brand" aria-label="Ir al inicio">
-                    <span class="site-header__brand-text">fcoux.pd</span>
-                    <span class="site-header__mode" data-service-label>
-                        Auditoría UX/UI
-                    </span>
-                </a>
+  <main>
 
-                <nav id="site-navigation" class="site-navigation" aria-label="Navegación principal">
-                    <ul class="site-navigation__list">
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-inner container">
+        <span class="section-eyebrow">Estudio boutique · Diseño y desarrollo</span>
+        <h1>Tu presencia digital puede hacer más por tu negocio</h1>
+        <p class="hero-body">Somos un estudio boutique de diseño y desarrollo. Trabajamos con empresas que quieren mejorar cómo se ven, cómo operan y cómo convierten en digital.</p>
+        <a href="#contacto" class="btn btn-primary btn-lg">Conversemos</a>
+      </div>
+    </section>
 
-                        <li class="site-navigation__item">
-                            <a href="#problema" class="site-navigation__link">Problema</a>
-                        </li>
-                        <li class="site-navigation__item">
-                            <a href="#oferta-principal" class="site-navigation__link">Oferta</a>
-                        </li>
-                        <li class="site-navigation__item">
-                            <a href="#resultados" class="site-navigation__link">Resultados</a>
-                        </li>
-                        <li class="site-navigation__item">
-                            <a href="#sobre-mi" class="site-navigation__link">Sobre mí</a>
-                        </li>
-                        <li class="site-navigation__item">
-                            <a href="#contacto" class="site-navigation__link">Contacto</a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <div class="site-header__actions">
-                    <button type="button" class="site-header__theme-button" aria-label="Cambiar tema">
-                        <span class="icon-sun" aria-hidden="true">☀️</span>
-                        <span class="icon-moon" aria-hidden="true">🌙</span>
-                    </button>
-
-                    <button type="button" class="site-header__menu-button" aria-expanded="false" aria-controls="site-navigation" aria-label="Abrir menú de navegación">
-                        <span class="site-header__menu-line" aria-hidden="true"></span>
-                        <span class="site-header__menu-line" aria-hidden="true"></span>
-                        <span class="site-header__menu-line" aria-hidden="true"></span>
-                    </button>
-                </div>
-
-            </div>
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <div class="section-inner container">
+        <div class="section-header">
+          <span class="section-label">Servicios</span>
+          <h2>Lo que construimos</h2>
         </div>
-    </header>
+        <div class="servicios-grid">
 
-    <main id="main-content" role="main">
-
-        <!-- HERO -->
-        <section id="hero" class="hero section" aria-labelledby="hero-title">
-            <div class="container">
-                <div class="hero__layout">
-
-                    <div class="hero__content">
-                        <header class="hero__header">
-                            <div class="service-switch" role="tablist" aria-label="Seleccionar servicio">
-                                <button type="button" class="service-switch__button is-active" data-service="audit" role="tab" aria-selected="true">
-                                    Auditoría UX/UI
-                                </button>
-
-                                <button type="button" class="service-switch__button" data-service="design" role="tab" aria-selected="false">
-                                    Diseño UX/UI
-                                </button>
-                            </div>
-
-                            <h1 id="hero-title" class="hero__title">
-                                Tu sitio podría estar perdiendo clientes
-                            </h1>
-
-                            <p class="hero__description">
-                                Detecto fricción, errores y oportunidades invisibles que afectan conversión, confianza y resultados.
-                            </p>
-                        </header>
-
-                        <div class="hero__actions" aria-label="Acciones principales">
-                            <a href="#oferta-principal" class="hero__primary-link">
-                                Solicitar diagnóstico
-                    </a>
-
-                            <a href="#problema" class="hero__secondary-link">
-                                Problemas frecuentes
-                    </a>
-                        </div>
-                    </div>
-
-                </div>
+          <div class="servicio-card">
+            <div class="servicio-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18M9 21V9"/>
+              </svg>
             </div>
-        </section>
+            <h3>Diseño</h3>
+            <p>Creamos interfaces visuales alineadas a los objetivos de tu negocio. Desde la arquitectura de pantallas hasta los componentes de tu producto digital.</p>
+          </div>
 
-        <!-- PROBLEMA -->
-        <section id="problema" class="section section--neutral" aria-labelledby="problema-title">
-            <div class="container">
-                <div class="problema__layout">
-
-                    <header class="problema__header">
-                        <h2 id="problema-title" class="section__title">
-                            Problemas frecuentes que frenan resultados
-                        </h2>
-                        <p class="section__description">
-                            Estas señales suelen generar dudas, fricción o abandono antes del contacto
-                        </p>
-                    </header>
-
-                    <div class="problema__content">
-                        <ul class="problema__list" aria-label="Situaciones comunes">
-
-                            <li class="problema__item">
-                                <span class="problema__icon" aria-hidden="true">✦</span>
-
-                                <h3 class="problema__card-title">
-                                    Tu propuesta no se entiende rápido.
-                                </h3>
-
-                                <p class="problema__card-description">
-                                    Si la claridad falla en segundos, aumentan las dudas y baja la intención de contacto.
-                                </p>
-                            </li>
-
-                            <li class="problema__item">
-                                <span class="problema__icon" aria-hidden="true">✦</span>
-
-                                <h3 class="problema__card-title">
-                                    Tu sitio genera dudas.
-                                </h3>
-
-                                <p class="problema__card-description">
-                                    Cuando falta confianza visual o contenido claro, la persona compara y se va.
-                                </p>
-                            </li>
-
-                            <li class="problema__item">
-                                <span class="problema__icon" aria-hidden="true">✦</span>
-
-                                <h3 class="problema__card-title">
-                                    Inviertes, pero no conviertes.
-                                </h3>
-
-                                <p class="problema__card-description">
-                                    Puedes estar atrayendo visitas, pero perdiendo oportunidades por fricción invisible.
-                                </p>
-                            </li>
-
-                            <li class="problema__item">
-                                <span class="problema__icon" aria-hidden="true">✦</span>
-
-                                <h3 class="problema__card-title">
-                                    Tu competencia parece más confiable.
-                                </h3>
-
-                                <p class="problema__card-description">
-                                    Una mejor estructura, evidencia y jerarquía puede cambiar la percepción de valor.
-                                </p>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                    <footer class="problema__footer">
-                        <p class="problema__note">
-                            Detectarlo a tiempo cambia decisiones, inversión y resultados.
-                        </p>
-                    </footer>
-
-                </div>
+          <div class="servicio-card">
+            <div class="servicio-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
             </div>
-        </section>
+            <h3>Desarrollo</h3>
+            <p>Construimos sitios y plataformas web que funcionan: landings, ecommerce y sitios con gestor de contenido. Rápidos, ordenados y fáciles de mantener.</p>
+          </div>
 
-        <!-- OFERTA PRINCIPAL -->
-        <section id="oferta-principal" class="section section--light" aria-labelledby="oferta-title">
-            <div class="container">
-                <div class="oferta__layout">
-
-                    <header class="oferta__header">
-                        <h2 id="oferta-title" class="section__title">
-                            Diagnóstico de tu sitio web
-                        </h2>
-
-                        <p class="section__description">
-                            Recibes una revisión clara, priorizada y explicada para saber qué corregir primero.
-                        </p>
-                    </header>
-
-                    <div class="oferta__content">
-                        <ul class="oferta__list" aria-label="Qué incluye la revisión">
-
-                            <li class="oferta__item">
-                                <span class="oferta__icon" aria-hidden="true">✓</span>
-
-                                <h3 class="oferta__card-title">
-                                    Revisión estructural.
-                                </h3>
-
-                                <p class="oferta__card-description">
-                                    Analizo contenido, jerarquía y recorrido para entender si la página guía bien la decisión.
-                                </p>
-                            </li>
-
-                            <li class="oferta__item">
-                                <span class="oferta__icon" aria-hidden="true">✓</span>
-
-                                <h3 class="oferta__card-title">
-                                    Detección de fricción.
-                                </h3>
-
-                                <p class="oferta__card-description">
-                                    Identifico puntos que generan dudas, abandono o pérdida de confianza antes del contacto.
-                                </p>
-                            </li>
-
-                            <li class="oferta__item">
-                                <span class="oferta__icon" aria-hidden="true">✓</span>
-
-                                <h3 class="oferta__card-title">
-                                    Ejemplos de mejora.
-                                </h3>
-
-                                <p class="oferta__card-description">
-                                    Te muestro oportunidades concretas para mejorar claridad, interacción y conversión.
-                                </p>
-                            </li>
-
-                            <li class="oferta__item">
-                                <span class="oferta__icon" aria-hidden="true">✓</span>
-
-                                <h3 class="oferta__card-title">
-                                    Plan priorizado.
-                                </h3>
-
-                                <p class="oferta__card-description">
-                                    Ordeno los hallazgos según impacto para que sepas qué corregir primero.
-                                </p>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                    <div class="oferta__meta" aria-label="Condiciones del servicio">
-                        <div class="oferta__meta-item">
-                            <p class="oferta__meta-label">Entrega</p>
-                            <p class="oferta__meta-value">3 a 5 días hábiles</p>
-                        </div>
-
-                        <div class="oferta__meta-item oferta__meta-item--featured">
-                            <p class="oferta__meta-label">Inversión</p>
-
-                            <p class="oferta__meta-value">
-                                <span class="oferta__meta-prefix">Desde</span>
-                                <span class="oferta__meta-price">$99.000 + IVA</span>
-                            </p>
-                        </div>
-                        <div class="oferta__meta-item">
-                            <p class="oferta__meta-label">Ideal para</p>
-                            <p class="oferta__meta-value">
-                                Negocios que necesitan entender qué está frenando resultados antes de rediseñar o invertir más.
-                            </p>
-                        </div>
-
-                        <div class="oferta__actions" aria-label="Acción principal">
-                            <a href="#contacto" class="oferta__cta">
-                                Solicitar diagnóstico
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+          <div class="servicio-card">
+            <div class="servicio-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
             </div>
-        </section>
+            <h3>UX</h3>
+            <p>Analizamos cómo usan tu plataforma los usuarios y detectamos dónde se pierde atención, confianza o conversión. Entregamos un plan concreto de mejora.</p>
+          </div>
 
-        <!-- RESULTADOS / CASOS -->
-        <section id="resultados" class="section section--neutral" aria-labelledby="resultados-title">
-            <div class="container">
-                <div class="resultados__layout">
-
-                    <header class="resultados__header">
-                        <h2 id="resultados-title" class="section__title">
-                            Casos reales de mejora detectada
-                        </h2>
-
-                        <p class="section__description">
-                            “Ejemplos de fricciones reales y mejoras posibles para aumentar claridad, confianza y contacto.
-                        </p>
-                    </header>
-
-                    <div class="resultados__content">
-
-                        <article class="resultado-card">
-                            <div class="resultado-card__image">
-                                <img src="/assets/problem1.webp" alt="Ejemplo de mejora en formulario de contacto">
-                            </div>
-
-                            <div class="resultado-card__body">
-                                <p class="resultado-card__label">
-                                    Problema
-                                </p>
-                                <h3 class="resultado-card__title">
-                                    Formulario sin funcionamiento visible
-                                </h3>
-
-                                <p class="resultado-card__label">
-                                    Impacto
-                                </p>
-                                <p class="resultado-card__text">
-                                    Puedes estar perdiendo contactos sin darte cuenta.
-                                </p>
-
-                                <p class="resultado-card__label">
-                                    Mejora
-                                </p>
-                                <p class="resultado-card__text">
-                                    Validar envío, corregir destino de mensajes y hacer el estado del formulario más claro.
-                                </p>
-                            </div>
-                        </article>
-
-                        <article class="resultado-card">
-                            <div class="resultado-card__image">
-                                <img src="/assets/problem2.webp" alt="Ejemplo de mejora en número">
-                            </div>
-
-                            <div class="resultado-card__body">
-                                <p class="resultado-card__label">
-                                    Problema
-                                </p>
-                                <h3 class="resultado-card__title">
-                                    Número de contacto mal ubicado o no clickeable
-                                </h3>
-
-                                <p class="resultado-card__label">
-                                    Impacto
-                                </p>
-                                <p class="resultado-card__text">
-                                    Reduce la posibilidad de contacto directo, sobre todo en mobile.
-                                </p>
-
-                                <p class="resultado-card__label">
-                                    Mejora
-                                </p>
-                                <p class="resultado-card__text">
-                                    Dar visibilidad al número y facilitar el contacto inmediato.
-                                </p>
-                            </div>
-                        </article>
-
-                        <article class="resultado-card">
-                            <div class="resultado-card__image">
-                                <img src="/assets/problem3.png" alt="Ejemplo de mejora en número">
-                            </div>
-
-                            <div class="resultado-card__body">
-                                <p class="resultado-card__label">
-                                    Problema
-                                </p>
-                                <h3 class="resultado-card__title">
-                                    Jerarquía visual confusa
-                                </h3>
-
-                                <p class="resultado-card__label">
-                                    Impacto
-                                </p>
-                                <p class="resultado-card__text">
-                                    La persona entra, pero no entiende qué haces ni qué debería hacer después.
-                                </p>
-
-                                <p class="resultado-card__label">
-                                    Mejora
-                                </p>
-                                <p class="resultado-card__text">
-                                    Ordenar títulos, contenido y llamados a la acción para guiar mejor la lectura.
-                                </p>
-                            </div>
-                        </article>
-
-                        <article class="resultado-card">
-                            <div class="resultado-card__image">
-                                <img src="/assets/problem4.png" alt="Ejemplo de mejora en número">
-                            </div>
-
-                            <div class="resultado-card__body">
-                                <p class="resultado-card__label">
-                                    Problema
-                                </p>
-                                <h3 class="resultado-card__title">
-                                    Contenido excesivo o mal distribuido
-                                </h3>
-
-                                <p class="resultado-card__label">
-                                    Impacto
-                                </p>
-                                <p class="resultado-card__text">
-                                    Genera confusión, fatiga y abandono.
-                                </p>
-
-                                <p class="resultado-card__label">
-                                    Mejora
-                                </p>
-                                <p class="resultado-card__text">
-                                    Reducir texto, priorizar información clave y enfocar cada bloque en una sola idea.
-                                </p>
-                            </div>
-                        </article>
-
-                    </div>
-
-                    <div class="resultados__actions" aria-label="Acción de resultados">
-                        <a href="#contacto" class="resultados__cta">
-                    Solicitar revisión
-                </a>
-                    </div>
-
-                </div>
+          <div class="servicio-card">
+            <div class="servicio-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+              </svg>
             </div>
-        </section>
-
-        <!-- SOBRE MÍ -->
-        <section id="sobre-mi" class="section section--light" aria-labelledby="sobre-mi-title">
-            <div class="container">
-                <div class="sobre-mi__layout">
-
-                    <header class="sobre-mi__header">
-                        <h2 id="sobre-mi-title" class="section__title">
-                            Diseño, análisis y experiencia aplicada
-                        </h2>
-                        <p class="section__description">
-                            Product Designer con base en UX Research, enfocado en detectar fricción, ordenar decisiones y mejorar experiencias digitales.
-                        </p>
-                    </header>
-
-                    <div class="sobre-mi__content">
-
-
-                        <ul class="sobre-mi__list" aria-label="Experiencia y enfoque">
-
-                            <li class="sobre-mi__item">
-                                <span class="sobre-mi__tag">UX/UI + Research</span>
-                                <p class="sobre-mi__item-text">
-                                    Experiencia en análisis, estructura y mejora de experiencias digitales con foco en usabilidad real.
-                                </p>
-                            </li>
-
-                            <li class="sobre-mi__item">
-                                <span class="sobre-mi__tag">Producto + Negocio</span>
-                                <p class="sobre-mi__item-text">
-                                    Enfoque en decisiones que conectan experiencia, claridad comercial y objetivos concretos.
-                                </p>
-                            </li>
-
-                            <li class="sobre-mi__item">
-                                <span class="sobre-mi__tag">Ejecución + Mejora</span>
-                                <p class="sobre-mi__item-text">
-                                    Trabajo práctico para detectar oportunidades, priorizar mejoras y convertir hallazgos en acción.
-                                </p>
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                    <div class="problema__footer">
-                        <p class="problema__note">
-                            No se trata solo de detectar errores, sino de entender qué limita resultados y cómo mejorarlo.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACTO -->
-        <section id="contacto" class="section section--neutral" aria-labelledby="contacto-title">
-            <div class="container">
-                <div class="contacto__layout">
-
-                    <header class="contacto__header">
-                        <h2 id="contacto-title" class="section__title">
-                            Hablemos de tu página
-                        </h2>
-
-                        <p class="section__description">
-                            Déjame el enlace de tu sitio y reviso si hay señales que estén afectando claridad, confianza o contacto.
-                        </p>
-                    </header>
-
-                    <div class="contacto__content">
-
-                        <!-- COLUMNA IZQUIERDA -->
-                        <div class="contacto__info">
-
-                            <div class="contacto__block">
-                                <span class="contacto__icon" aria-hidden="true">✉</span>
-
-                                <div class="contacto__block-content">
-                                    <p class="contacto__label">
-                                        Email
-                                    </p>
-                                    <a href="mailto:contacto@olivaos.com" class="contacto__link">
-                                        contacto@olivaos.com
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="contacto__block">
-                                <span class="contacto__icon" aria-hidden="true">in</span>
-
-                                <div class="contacto__block-content">
-                                    <p class="contacto__label">
-                                        LinkedIn
-                                    </p>
-                                    <a href="https://www.linkedin.com/in/francisco-orellana-v/" class="contacto__link" target="_blank" rel="noopener">
-                                        Ir a LinkedIn
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="contacto__block">
-                                <span class="contacto__icon" aria-hidden="true">⏱</span>
-
-                                <div class="contacto__block-content">
-                                    <p class="contacto__label">
-                                        Tiempo de respuesta
-                                    </p>
-                                    <p class="contacto__text">
-                                        Menos de 12 horas
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- COLUMNA DERECHA -->
-                        <div class="contacto__form-wrapper">
-
-                            <form class="contacto__form" name="contacto" method="POST" data-netlify="true">
-                                <input type="hidden" name="form-name" value="contacto">
-                                <p class="contacto__error" id="error-email">
-                                    Ingresa un email válido.
-                                </p>
-                                <div class="contacto__field">
-                                    <label for="nombre" class="contacto__label">
-                                        Nombre
-                                    </label>
-                                    <input type="text" id="nombre" name="nombre" class="contacto__input" required aria-describedby="error-nombre">
-                                    <p class="contacto__error" id="error-nombre">
-                                        Ingresa tu nombre.
-                                    </p>
-                                </div>
-
-                                <div class="contacto__field">
-                                    <label for="email" class="contacto__label">
-                                Email
-                            </label>
-                                    <input type="email" id="email" name="email" class="contacto__input" required aria-describedby="error-email">
-                                    <p class="contacto__error" id="error-email">
-                                        Ingresa un email válido.
-                                    </p>
-                                </div>
-
-                                <div class="contacto__field">
-                                    <label for="enlace" class="contacto__label">
-                                Enlace/URL de tu página
-                            </label>
-                                    <input type="url" id="enlace" name="enlace" class="contacto__input" required aria-describedby="error-enlace">
-                                    <p class="contacto__error" id="error-enlace">
-                                        Ingresa una Enlace/URL válido.
-                                    </p>
-                                </div>
-
-                                <div class="contacto__field">
-                                    <label for="mensaje" class="contacto__label">
-                                Mensaje
-                            </label>
-                                    <textarea id="mensaje" name="mensaje" class="contacto__textarea" rows="4" minlength="50" required aria-describedby="error-mensaje"></textarea>
-                                    <p class="contacto__error" id="error-mensaje">
-                                        Mensaje mínimo 50 caracteres.
-                                    </p>
-                                </div>
-                                <div class="contacto__field contacto__field--checkbox">
-                                    <label class="contacto__checkbox">
-                                        <input type="checkbox" name="terminos" required>
-                                        <span>
-                                            Acepto los 
-                                            <a href="/terminos.html" target="_blank" rel="noopener">
-                                                términos y condiciones
-                                            </a>
-                                            y la 
-                                            <a href="/privacidad.html" target="_blank" rel="noopener">
-                                                política de privacidad
-                                            </a>.
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="contacto__actions">
-
-                                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAC-Jed24OpiKb_pI"></div>
-
-                                    <button type="submit" class="contacto__cta">
-                                        Enviar solicitud
-                                    </button>
-
-                                </div>
-
-                                <p class="contacto__note">
-                                    No es una venta inmediata, es una revisión para entender tu caso.
-                                </p>
-
-                            </form>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer id="footer" class="footer" aria-labelledby="footer-title">
-        <div class="container">
-            <div class="footer__layout">
-
-                <div class="footer__brand">
-                    <h3 id="footer-title" class="footer__title">
-                        fcoux.pd
-                    </h3>
-
-                    <p class="footer__description">
-                        Diagnóstico, claridad y mejora digital para detectar qué limita resultados.
-                    </p>
-                </div>
-
-                <nav class="footer__nav" aria-label="Navegación secundaria">
-                    <ul class="footer__list">
-                        <li class="footer__item">
-                            <a href="#hero" class="footer__link">Inicio</a>
-                        </li>
-                        <li class="footer__item">
-                            <a href="#problema" class="footer__link">Problema</a>
-                        </li>
-                        <li class="footer__item">
-                            <a href="#oferta-principal" class="footer__link">Oferta</a>
-                        </li>
-                        <li class="footer__item">
-                            <a href="#resultados" class="footer__link">Resultados</a>
-                        </li>
-                        <li class="footer__item">
-                            <a href="#sobre-mi" class="footer__link">Sobre mí</a>
-                        </li>
-                        <li class="footer__item">
-                            <a href="#contacto" class="footer__link">Contacto</a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <div class="footer__contact">
-                    <ul class="footer__list">
-                        <li class="footer__item">
-                            <a href="mailto:contacto@olivaos.com" class="footer__link">
-                                contacto@olivaos.com
-                        </a>
-                        </li>
-                        <li class="footer__item">
-                            <a href="https://www.linkedin.com/in/francisco-orellana-v/" class="footer__link" target="_blank" rel="noopener">
-                            LinkedIn
-                        </a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="footer__bottom">
-                <p class="footer__copy">
-                    © 2026 Francisco Orellana. Todos los derechos reservados.
-                </p>
-            </div>
+            <h3>Consultoría</h3>
+            <p>Acompañamos decisiones digitales: estrategia, gestión de proyecto y mentoría. Para equipos que necesitan claridad antes de ejecutar.</p>
+          </div>
 
         </div>
-    </footer>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-    <script src="js/index.js"></script>
+      </div>
+    </section>
+
+    <!-- CASOS -->
+    <section id="casos">
+      <div class="section-inner container">
+        <div class="section-header">
+          <span class="section-label">Casos</span>
+          <h2>Trabajo aplicado</h2>
+        </div>
+        <div class="casos-list">
+
+          <div class="caso-row">
+            <div class="caso-images">
+              <div class="caso-img-main" aria-hidden="true"></div>
+              <div class="caso-img-thumbs" aria-hidden="true">
+                <div class="caso-img-thumb"></div>
+                <div class="caso-img-thumb"></div>
+                <div class="caso-img-thumb"></div>
+              </div>
+            </div>
+            <div class="caso-content">
+              <div class="caso-meta">
+                <span class="caso-industry">Dashboard</span>
+                <span class="caso-service">Diseño y Desarrollo</span>
+              </div>
+              <h3>Dashboard operativo para gestión de faenas y equipos en terreno</h3>
+              <p>Centraliza la operación de campo con módulos de programación, estado de avance por faena y trazabilidad de materiales. Acceso diferenciado por rol para operadores y gerencia.</p>
+            </div>
+          </div>
+
+          <div class="caso-row">
+            <div class="caso-images">
+              <div class="caso-img-main" aria-hidden="true"></div>
+              <div class="caso-img-thumbs" aria-hidden="true">
+                <div class="caso-img-thumb"></div>
+                <div class="caso-img-thumb"></div>
+                <div class="caso-img-thumb"></div>
+              </div>
+            </div>
+            <div class="caso-content">
+              <div class="caso-meta">
+                <span class="caso-industry">Transporte</span>
+                <span class="caso-service">Producto</span>
+              </div>
+              <h3>Plataforma de coordinación de fletes entre transportistas y clientes</h3>
+              <p>Digitaliza el flujo completo: cotización, asignación de vehículo, seguimiento y cierre. Sin fricción en ninguna etapa del proceso.</p>
+            </div>
+          </div>
+
+          <div class="caso-row">
+            <div class="caso-images">
+              <div class="caso-img-main" aria-hidden="true"></div>
+              <div class="caso-img-thumbs" aria-hidden="true">
+                <div class="caso-img-thumb"></div>
+                <div class="caso-img-thumb"></div>
+                <div class="caso-img-thumb"></div>
+              </div>
+            </div>
+            <div class="caso-content">
+              <div class="caso-meta">
+                <span class="caso-industry">Framework</span>
+                <span class="caso-service">Open Source</span>
+              </div>
+              <h3>Sistema de componentes y tokens base del stack de Olivacraft</h3>
+              <p>Reglas operacionales, tokens de diseño y componentes reutilizables. Construido para acelerar la producción sin perder consistencia entre proyectos.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- POR QUÉ OLIVACRAFT -->
+    <section id="porque">
+      <div class="section-inner container">
+        <div class="section-header">
+          <span class="section-label">¿Por qué nosotros?</span>
+          <h2>Por qué Olivacraft</h2>
+        </div>
+        <div class="porque-grid">
+
+          <div class="porque-item">
+            <div class="porque-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                <path d="M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </div>
+            <h3>Trato directo</h3>
+            <p>Hablas con quien diseña y construye. Sin intermediarios, sin cuentas que rendir a capas de management que no conocen tu proyecto.</p>
+          </div>
+
+          <div class="porque-item">
+            <div class="porque-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <h3>Proceso sin letra chica</h3>
+            <p>Cada etapa es visible. Sabes qué se está haciendo, por qué y cuándo termina. Sin sorpresas de alcance ni costos que aparecen al final.</p>
+          </div>
+
+          <div class="porque-item">
+            <div class="porque-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <h3>Boutique de verdad</h3>
+            <p>Pocos proyectos a la vez. Cada cliente tiene atención real, no un slot en una parrilla de producción masiva donde nadie te conoce.</p>
+          </div>
+
+          <div class="porque-item">
+            <div class="porque-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4M12 16h.01"/>
+              </svg>
+            </div>
+            <h3>Criterio propio</h3>
+            <p>Si algo no es lo mejor para tu negocio, lo decimos. No ejecutamos sin cuestionar. El trabajo bien hecho vale más que un cliente complacido a corto plazo.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ESTUDIO -->
+    <section id="estudio">
+      <div class="section-inner container">
+        <span class="section-label">Estudio</span>
+        <div class="estudio-layout">
+          <div class="estudio-main">
+            <h2>Somos Olivacraft</h2>
+            <div class="estudio-body">
+              <p>Un estudio boutique de diseño y desarrollo digital. Trabajamos con equipos que necesitan soluciones claras, bien construidas y con atención directa en cada etapa.</p>
+              <p>Cada proyecto tiene criterio propio y un proceso transparente de inicio a fin. El cliente sabe qué se está construyendo, por qué y con quién habla.</p>
+            </div>
+            <a href="#contacto" class="btn btn-primary">Hablemos de tu proyecto</a>
+          </div>
+          <aside class="estudio-aside">
+            <span class="equipo-titulo">Equipo</span>
+
+            <div class="persona-card">
+              <div class="persona-avatar" aria-hidden="true"></div>
+              <div class="persona-info">
+                <span class="persona-name">Francisco</span>
+                <span class="persona-role">CEO, Product Designer &amp; Framework Architect</span>
+              </div>
+            </div>
+
+            <div class="persona-card">
+              <div class="persona-avatar" aria-hidden="true"></div>
+              <div class="persona-info">
+                <span class="persona-name">Anelisse</span>
+                <span class="persona-role">Director of Engineering &amp; UI Systems Lead</span>
+              </div>
+            </div>
+
+          </aside>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="section-inner container">
+        <div class="section-header">
+          <span class="section-label">Contacto</span>
+          <h2>Cuéntanos en qué estás trabajando</h2>
+          <p class="section-sub">Revisamos tu caso y respondemos en menos de 24 horas hábiles.</p>
+        </div>
+        <div class="contact-layout">
+        <form class="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre y empresa</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre o empresa" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="tu@empresa.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="servicio">¿En qué podemos ayudarte?</label>
+                <select id="servicio" name="servicio">
+                  <option value="" disabled selected>Selecciona un servicio</option>
+                  <option value="diseno">Diseño</option>
+                  <option value="desarrollo">Desarrollo</option>
+                  <option value="ux">UX</option>
+                  <option value="consultoria">Consultoría</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="etapa">¿En qué etapa estás?</label>
+                <select id="etapa" name="etapa">
+                  <option value="" disabled selected>Selecciona una etapa</option>
+                  <option value="nuevo">Proyecto nuevo</option>
+                  <option value="mejorar">Mejorar algo existente</option>
+                  <option value="orientacion">Necesito orientación</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripción breve del proyecto</label>
+              <textarea id="descripcion" name="descripcion" rows="4" placeholder="Cuéntanos qué necesitas resolver o mejorar..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+          </form>
+
+          <aside class="contact-info" aria-label="Contacto directo">
+            <div class="contact-info-item">
+              <span class="contact-info-label">Correo</span>
+              <a href="mailto:contacto@olivacraft.com">contacto@olivacraft.com</a>
+            </div>
+            <div class="contact-info-item">
+              <span class="contact-info-label">WhatsApp</span>
+              <a href="https://wa.me/56900000000" target="_blank" rel="noopener">Escríbenos directo</a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid container">
+
+      <div class="footer-brand">
+        <a href="#" class="wordmark" aria-label="Olivacraft">
+          <span class="wm-oliva">Oliva</span><span class="wm-craft">craft</span><span class="wm-dot">·</span>
+        </a>
+        <p>Estudio boutique de diseño y desarrollo digital.</p>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Navegación</span>
+        <ul role="list">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#casos">Casos</a></li>
+          <li><a href="#estudio">Estudio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Contacto</span>
+        <ul role="list">
+          <li><a href="mailto:contacto@olivacraft.com">contacto@olivacraft.com</a></li>
+          <li><a href="https://linkedin.com/in/francisco-orellana-v" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Legal</span>
+        <ul role="list">
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2026 Olivacraft. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
 </body>
-
 </html>
