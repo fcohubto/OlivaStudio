@@ -558,6 +558,18 @@ section { padding: var(--section-py) var(--container-px); }
   color: var(--c-od-body);
   line-height: var(--lh-loose);
 }
+.caso-link {
+  margin-top: var(--sp-2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-cyan);
+  opacity: 0.8;
+  transition: opacity var(--ease), gap var(--ease);
+}
+.caso-link:hover { opacity: 1; gap: var(--sp-3); }
 
 
 /* =============================================

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FleteApp — Caso de estudio · Olivacraft</title>
+  <meta name="description" content="Caso de estudio: FleteApp, cotizador de fletes en tiempo real para transportistas independientes. PWA mobile-first en MVP2.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/caso.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="wordmark" aria-label="Olivacraft — volver al inicio">
+        <span class="wm-oliva">Oliva</span><span class="wm-craft">craft</span><span class="wm-dot">·</span>
+      </a>
+      <a href="index.html#casos" class="btn btn-outline">
+        ← Casos
+      </a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO DEL CASO -->
+    <section class="caso-hero">
+      <div class="caso-hero-inner container">
+
+        <div class="caso-hero-content">
+          <a href="index.html#casos" class="caso-back" aria-label="Volver a casos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Casos de estudio
+          </a>
+          <div class="caso-tags" aria-label="Categorías del caso">
+            <span class="caso-tag">Transporte</span>
+            <span class="caso-tag">PWA</span>
+            <span class="caso-tag">MVP2</span>
+          </div>
+          <h1>Cotización de fletes en tiempo real, desde el celular</h1>
+          <p class="caso-hero-desc">FleteApp digitaliza el proceso de cotización para transportistas independientes. Catálogo por habitación, cálculo automático de volumen y costos, y presupuesto listo para compartir en segundos.</p>
+          <div class="caso-hero-ctas">
+            <a href="#solucion" class="btn btn-primary btn-lg">Ver solución</a>
+            <a href="https://github.com/fcohubto/fletes-app" target="_blank" rel="noopener" class="btn btn-outline btn-lg">GitHub</a>
+          </div>
+        </div>
+
+        <div class="caso-hero-visual" aria-hidden="true">
+          <div class="mockup-phone">
+            <div class="mockup-screen">
+              <div class="mockup-screen-bar">
+                <div class="mockup-screen-dot"></div>
+                <div class="mockup-screen-dot"></div>
+                <div class="mockup-screen-dot"></div>
+              </div>
+              <div class="mockup-screen-body">
+                <div class="mockup-line mockup-line--short"></div>
+                <div class="mockup-line mockup-line--accent"></div>
+                <div class="mockup-block"></div>
+                <div class="mockup-line"></div>
+                <div class="mockup-line mockup-line--short"></div>
+                <div class="mockup-block"></div>
+                <div class="mockup-line mockup-line--accent mockup-line--short"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- EL DESAFÍO -->
+    <section class="caso-section" id="desafio" aria-labelledby="desafio-titulo">
+      <div class="section-inner container">
+        <div class="caso-split">
+
+          <div class="caso-split-text">
+            <span class="section-label">El desafío</span>
+            <h2 id="desafio-titulo">Cotizar sin herramienta cuesta tiempo y clientes</h2>
+            <p>Los transportistas independientes calculan fletes de memoria o con papel y lápiz. El resultado: cotizaciones imprecisas, tiempos de respuesta lentos y dificultad para justificar el precio ante el cliente.</p>
+            <p>El desafío era construir una herramienta que pudiera usarse desde el celular, en terreno, sin necesidad de conexión, y que entregara un presupuesto claro y profesional en menos de dos minutos.</p>
+          </div>
+
+          <div class="pain-list" role="list">
+
+            <div class="pain-item" role="listitem">
+              <div class="pain-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div class="pain-body">
+                <strong>Cálculo manual lento</strong>
+                <p>Sin referencia de volúmenes por artículo, cada cotización dependía de la experiencia previa y generaba errores frecuentes.</p>
+              </div>
+            </div>
+
+            <div class="pain-item" role="listitem">
+              <div class="pain-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="pain-body">
+                <strong>Costos subestimados</strong>
+                <p>Sin incluir combustible, peajes y capacidad real del camión, los precios no cubrían el costo del servicio.</p>
+              </div>
+            </div>
+
+            <div class="pain-item" role="listitem">
+              <div class="pain-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <div class="pain-body">
+                <strong>Sin herramienta para el terreno</strong>
+                <p>Las soluciones existentes están pensadas para escritorio. El transportista trabaja desde el celular, muchas veces sin conexión.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- LA SOLUCIÓN -->
+    <section class="caso-section caso-section--dark" id="solucion" aria-labelledby="solucion-titulo">
+      <div class="section-inner container">
+        <div class="section-header">
+          <span class="section-label">La solución</span>
+          <h2 id="solucion-titulo">Una PWA que funciona donde el transportista trabaja</h2>
+          <p class="section-sub">Diseñada mobile-first, funciona sin conexión y entrega un presupuesto profesional en dos minutos.</p>
+        </div>
+
+        <div class="features-grid">
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3>Cotizador en tiempo real</h3>
+            <p>Volumen total, porcentaje de ocupación del camión y costo estimado se actualizan al instante con cada selección. Sin formularios ni pasos innecesarios.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </div>
+            <h3>Catálogo por habitación</h3>
+            <p>Artículos organizados por Dormitorio, Living, Cocina, Lavadero, Terraza y Cajas. Selección rápida con volúmenes en m³ predefinidos por ítem.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <h3>Presupuesto compartible</h3>
+            <p>Genera el resumen completo — artículos, volumen, distancia y costo total — y lo comparte vía WhatsApp, correo o clipboard con un solo toque.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            </div>
+            <h3>Funciona sin conexión</h3>
+            <p>Instalable como PWA con Service Worker. Guarda configuración del transportista, tarifa por km y historial de las últimas 10 cotizaciones en el dispositivo.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PANTALLAS -->
+    <section class="caso-section caso-section--frost" id="pantallas" aria-labelledby="pantallas-titulo">
+      <div class="section-inner container">
+        <div class="section-header">
+          <span class="section-label">Interfaz</span>
+          <h2 id="pantallas-titulo">Diseñada para el terreno</h2>
+          <p class="section-sub">Mobile-first, navegación simple y feedback visual inmediato en cada acción.</p>
+        </div>
+
+        <div class="screens-layout">
+
+          <div class="screens-col">
+            <div class="screen-ph screen-ph--main" aria-label="Pantalla principal del cotizador">
+              <div class="screen-ph-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <span>Cotizador principal</span>
+            </div>
+            <div class="screens-row">
+              <div class="screen-ph screen-ph--sm" aria-label="Catálogo de artículos">
+                <div class="screen-ph-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                </div>
+                <span>Catálogo</span>
+              </div>
+              <div class="screen-ph screen-ph--sm" aria-label="Resumen de costos">
+                <div class="screen-ph-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <span>Costos</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="screens-col">
+            <div class="screen-ph screen-ph--tall" aria-label="Resumen del presupuesto">
+              <div class="screen-ph-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <span>Presupuesto</span>
+            </div>
+            <div class="screen-ph screen-ph--tall" aria-label="Perfil del transportista">
+              <div class="screen-ph-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <span>Perfil</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- STACK + ESTADO -->
+    <section class="caso-section" id="stack" aria-labelledby="stack-titulo">
+      <div class="section-inner container">
+        <div class="caso-double">
+
+          <div>
+            <span class="section-label">Stack técnico</span>
+            <h2 id="stack-titulo">Vanilla, liviano y portable</h2>
+            <p>Sin frameworks. HTML, CSS y JavaScript puros para máxima portabilidad y rendimiento en dispositivos de gama media, que son los que usa la mayoría de los transportistas independientes.</p>
+            <div class="stack-tags" role="list" aria-label="Tecnologías usadas">
+              <span class="stack-tag" role="listitem">HTML5</span>
+              <span class="stack-tag" role="listitem">CSS3</span>
+              <span class="stack-tag" role="listitem">JavaScript</span>
+              <span class="stack-tag" role="listitem">PWA</span>
+              <span class="stack-tag" role="listitem">Service Worker</span>
+              <span class="stack-tag" role="listitem">localStorage</span>
+              <span class="stack-tag" role="listitem">Web Share API</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="section-label">Estado del proyecto</span>
+            <h2>MVP2 funcional</h2>
+            <div class="phase-list">
+
+              <div class="phase phase--done">
+                <span class="phase-dot" aria-hidden="true"></span>
+                <div class="phase-body">
+                  <strong>MVP1 — Completado</strong>
+                  <p>Cotizador básico con cálculo de volumen y costo por distancia y tarifa por km.</p>
+                </div>
+              </div>
+
+              <div class="phase phase--current">
+                <span class="phase-dot" aria-hidden="true"></span>
+                <div class="phase-body">
+                  <strong>MVP2 — Actual</strong>
+                  <p>Catálogo completo por categoría, perfil del transportista, historial de cotizaciones, compartir presupuesto y soporte offline.</p>
+                </div>
+              </div>
+
+              <div class="phase phase--next">
+                <span class="phase-dot" aria-hidden="true"></span>
+                <div class="phase-body">
+                  <strong>MVP3 — Próximo</strong>
+                  <p>Backend, autenticación, multi-transportista y panel de gestión con historial en la nube.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="caso-cta" aria-labelledby="cta-titulo">
+      <div class="container">
+        <span class="caso-cta-label">¿Tienes un producto que necesita este nivel de atención?</span>
+        <h2 id="cta-titulo">Construimos contigo desde la idea hasta el MVP.</h2>
+        <div class="caso-cta-actions">
+          <a href="index.html#contacto" class="btn btn-primary btn-lg">Hablemos de tu proyecto</a>
+          <a href="https://github.com/fcohubto/fletes-app" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Ver repo en GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid container">
+
+      <div class="footer-brand">
+        <a href="index.html" class="wordmark" aria-label="Olivacraft">
+          <span class="wm-oliva">Oliva</span><span class="wm-craft">craft</span><span class="wm-dot">·</span>
+        </a>
+        <p>Estudio boutique de diseño y desarrollo digital.</p>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Navegación</span>
+        <ul role="list">
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#casos">Casos</a></li>
+          <li><a href="index.html#estudio">Estudio</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Contacto</span>
+        <ul role="list">
+          <li><a href="mailto:contacto@olivacraft.com">contacto@olivacraft.com</a></li>
+          <li><a href="https://linkedin.com/in/francisco-orellana-v" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Legal</span>
+        <ul role="list">
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2026 Olivacraft. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
