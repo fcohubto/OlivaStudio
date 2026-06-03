@@ -10,25 +10,25 @@
 :root {
 
   /* --- Colores de marca --- */
-  --c-night:      #0D2B4A;
-  --c-blue:       #0A7EC2;
-  --c-blue-dark:  #0870aa;
+  --c-night:      #09090B;   /* negro carbón — bg base y secciones profundas */
+  --c-blue:       #3EC6D4;   /* cyan como acento interactivo principal */
+  --c-blue-dark:  #2ba8b4;   /* cyan oscuro para hover */
   --c-cyan:       #3EC6D4;
-  --c-frost:      #F2F8FD;
+  --c-frost:      #0E0E11;   /* elevación leve — hero, estudio, secciones alternas */
   --c-white:      #ffffff;
 
-  /* --- Tinta (texto sobre fondo claro) --- */
-  --c-ink:        #1A2C3D;
-  --c-ink-soft:   #3D5A74;
-  --c-ink-muted:  #6A8EA8;
-  --c-ink-faint:  #9AB4C8;
+  /* --- Tinta (texto sobre fondo oscuro) --- */
+  --c-ink:        rgba(255, 255, 255, 0.90);
+  --c-ink-soft:   rgba(255, 255, 255, 0.60);
+  --c-ink-muted:  rgba(255, 255, 255, 0.38);
+  --c-ink-faint:  rgba(255, 255, 255, 0.22);
 
-  /* --- Superficies y bordes claros --- */
-  --c-surface:    #EAF3FB;
-  --c-border:     rgba(10, 126, 194, 0.12);
-  --c-border-mid: rgba(10, 126, 194, 0.22);
+  /* --- Superficies y bordes oscuros --- */
+  --c-surface:    #141417;   /* cards, inputs, elementos elevados */
+  --c-border:     rgba(255, 255, 255, 0.07);
+  --c-border-mid: rgba(255, 255, 255, 0.13);
 
-  /* --- Sobre fondo oscuro (--c-night) --- */
+  /* --- Sobre fondo oscuro (herencia — mantener compatibilidad) --- */
   --c-od-text:    rgba(255, 255, 255, 0.85);
   --c-od-body:    rgba(255, 255, 255, 0.45);
   --c-od-muted:   rgba(255, 255, 255, 0.3);
@@ -39,8 +39,9 @@
   --c-od-bg:      rgba(255, 255, 255, 0.04);
   --c-od-bg-mid:  rgba(255, 255, 255, 0.06);
 
-  /* --- Fuente --- */
-  --font: 'Figtree', system-ui, sans-serif;
+  /* --- Fuentes --- */
+  --font:         'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
 
   /* --- Escala tipográfica --- */
   --text-2xs:  0.68rem;   /*  ~11px — etiquetas footer */
@@ -107,9 +108,9 @@
   --ease-base: 0.2s ease;
 
   /* --- Sombras --- */
-  --shadow-btn:   0 4px 16px rgba(10, 126, 194, 0.3);
-  --shadow-card:  0 8px 32px rgba(10, 126, 194, 0.08);
-  --shadow-focus: 0 0 0 3px rgba(10, 126, 194, 0.12);
+  --shadow-btn:   0 4px 20px rgba(62, 198, 212, 0.25);
+  --shadow-card:  0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-focus: 0 0 0 3px rgba(62, 198, 212, 0.18);
 
   /* --- Layout --- */
   --max-w:        1100px;
@@ -166,23 +167,25 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
    3. TIPOGRAFÍA BASE
    ============================================= */
 h1 {
+  font-family: var(--font-display);
   font-size: var(--text-h1);
   font-weight: var(--fw-black);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-snug);
-  color: var(--c-night);
+  color: var(--c-ink);
 }
 h2 {
+  font-family: var(--font-display);
   font-size: var(--text-h2);
   font-weight: var(--fw-bold);
   line-height: var(--lh-snug);
   letter-spacing: var(--ls-normal);
-  color: var(--c-night);
+  color: var(--c-ink);
 }
 h3 {
   font-size: var(--text-xl);
   font-weight: var(--fw-bold);
-  color: var(--c-night);
+  color: var(--c-ink);
 }
 p {
   font-size: var(--text-base);
@@ -239,9 +242,9 @@ section { padding: var(--section-py) var(--container-px); }
   line-height: var(--lh-none);
   font-size: var(--text-xl);
 }
-.wm-oliva { font-weight: var(--fw-light); color: var(--c-night); }
-.wm-craft { font-weight: var(--fw-black); color: var(--c-night); }
-.wm-dot   { font-weight: var(--fw-bold);  color: var(--c-blue); margin-left: 1px; }
+.wm-oliva { font-weight: var(--fw-light); color: var(--c-ink); }
+.wm-craft { font-weight: var(--fw-black); color: var(--c-ink); }
+.wm-dot   { font-weight: var(--fw-bold);  color: var(--c-cyan); margin-left: 1px; }
 
 
 /* =============================================
@@ -265,9 +268,9 @@ section { padding: var(--section-py) var(--container-px); }
   white-space: nowrap;
 }
 .btn-primary {
-  background: var(--c-blue);
-  color: var(--c-white);
-  border-color: var(--c-blue);
+  background: var(--c-cyan);
+  color: var(--c-night);
+  border-color: var(--c-cyan);
 }
 .btn-primary:hover {
   background: var(--c-blue-dark);
@@ -297,9 +300,9 @@ section { padding: var(--section-py) var(--container-px); }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(242, 248, 253, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(9, 9, 11, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--c-border);
 }
 .nav {
@@ -318,7 +321,7 @@ section { padding: var(--section-py) var(--container-px); }
   border-radius: var(--radius-xs);
   transition: color var(--ease), background var(--ease);
 }
-.nav-links a:hover { color: var(--c-night); background: var(--c-surface); }
+.nav-links a:hover { color: var(--c-ink); background: rgba(255, 255, 255, 0.06); }
 .nav-cta { display: none; }
 
 .nav-toggle {
@@ -334,7 +337,7 @@ section { padding: var(--section-py) var(--container-px); }
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--c-night);
+  background: var(--c-ink);
   border-radius: var(--radius-full);
   transition: all var(--ease-base);
 }
@@ -348,7 +351,7 @@ section { padding: var(--section-py) var(--container-px); }
   gap: var(--sp-3);
   padding: var(--sp-4) var(--sp-6) var(--sp-6);
   border-top: 1px solid var(--c-border);
-  background: rgba(242, 248, 253, 0.97);
+  background: rgba(9, 9, 11, 0.97);
 }
 .nav-mobile.open { display: flex; }
 .nav-mobile ul { display: flex; flex-direction: column; gap: var(--sp-1); }
@@ -361,7 +364,7 @@ section { padding: var(--section-py) var(--container-px); }
   display: block;
   transition: color var(--ease), background var(--ease);
 }
-.nav-mobile a:hover { color: var(--c-night); background: var(--c-surface); }
+.nav-mobile a:hover { color: var(--c-ink); background: rgba(255, 255, 255, 0.06); }
 .nav-mobile .btn { width: 100%; }
 
 @media (min-width: 768px) {
@@ -382,8 +385,9 @@ section { padding: var(--section-py) var(--container-px); }
   padding-top: var(--sp-20);
   padding-bottom: var(--sp-20);
   background:
-    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(62, 198, 212, 0.09) 0%, transparent 70%),
-    var(--c-frost);
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(62, 198, 212, 0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(94, 106, 210, 0.06) 0%, transparent 60%),
+    var(--c-night);
   position: relative;
   overflow: hidden;
 }
@@ -416,6 +420,39 @@ section { padding: var(--section-py) var(--container-px); }
   margin-bottom: var(--sp-8);
 }
 .hero-inner h1 { margin-bottom: var(--sp-6); }
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+}
+@media (min-width: 540px) {
+  .hero-actions { flex-direction: row; }
+}
+.hero-stats {
+  display: flex;
+  gap: var(--sp-10);
+  margin-top: var(--sp-14);
+  padding-top: var(--sp-8);
+  border-top: 1px solid var(--c-border);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hero-stat { display: flex; flex-direction: column; align-items: center; gap: var(--sp-1); text-align: center; }
+.hero-stat strong {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  color: var(--c-cyan);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+}
+.hero-stat span {
+  font-size: var(--text-xs);
+  color: var(--c-ink-muted);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+}
 .hero-body {
   font-size: var(--text-lg);
   color: var(--c-ink-soft);
@@ -429,7 +466,7 @@ section { padding: var(--section-py) var(--container-px); }
    9. SERVICIOS
    ============================================= */
 #servicios {
-  background: var(--c-white);
+  background: var(--c-frost);
   border-top: 1px solid var(--c-border);
 }
 .servicios-grid {
@@ -448,10 +485,10 @@ section { padding: var(--section-py) var(--container-px); }
   transition: background var(--ease-base);
 }
 .servicio-card:last-child { border-bottom: none; }
-.servicio-card:hover { background: var(--c-surface); }
+.servicio-card:hover { background: rgba(255, 255, 255, 0.03); }
 .servicio-card:hover .servicio-icon {
-  background: var(--c-blue);
-  color: var(--c-white);
+  background: var(--c-cyan);
+  color: var(--c-night);
 }
 .servicio-icon {
   width: 40px;
@@ -459,9 +496,9 @@ section { padding: var(--section-py) var(--container-px); }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--c-surface);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-sm);
-  color: var(--c-blue);
+  color: var(--c-cyan);
   margin-bottom: var(--sp-3);
   transition: background var(--ease-base), color var(--ease-base);
   flex-shrink: 0;
@@ -576,7 +613,7 @@ section { padding: var(--section-py) var(--container-px); }
    11. POR QUÉ OLIVACRAFT
    ============================================= */
 #porque {
-  background: var(--c-white);
+  background: var(--c-night);
   border-top: 1px solid var(--c-border);
 }
 .porque-grid {
@@ -594,7 +631,7 @@ section { padding: var(--section-py) var(--container-px); }
   padding: var(--sp-8);
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
-  background: var(--c-frost);
+  background: var(--c-surface);
   transition: border-color var(--ease-base);
 }
 .porque-item:hover { border-color: var(--c-border-mid); }
@@ -604,13 +641,13 @@ section { padding: var(--section-py) var(--container-px); }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--c-surface);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-sm);
-  color: var(--c-blue);
+  color: var(--c-cyan);
   flex-shrink: 0;
 }
 .porque-icon svg { width: 20px; height: 20px; }
-.porque-item h3 { color: var(--c-night); }
+.porque-item h3 { color: var(--c-ink); }
 .porque-item p  { color: var(--c-ink-soft); line-height: var(--lh-relaxed); }
 
 
@@ -670,7 +707,7 @@ section { padding: var(--section-py) var(--container-px); }
   gap: var(--sp-4);
   align-items: center;
   padding: var(--sp-5) var(--sp-6);
-  background: var(--c-white);
+  background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
   transition: border-color var(--ease-base);
@@ -680,7 +717,7 @@ section { padding: var(--section-py) var(--container-px); }
   width: 48px;
   height: 48px;
   border-radius: var(--radius-full);
-  background: var(--c-surface);
+  background: rgba(255, 255, 255, 0.08);
   border: 2px solid var(--c-border);
   flex-shrink: 0;
 }
@@ -688,7 +725,7 @@ section { padding: var(--section-py) var(--container-px); }
 .persona-name {
   font-size: var(--text-base);
   font-weight: var(--fw-bold);
-  color: var(--c-night);
+  color: var(--c-ink);
 }
 .persona-role {
   font-size: var(--text-sm);
@@ -701,7 +738,7 @@ section { padding: var(--section-py) var(--container-px); }
    13. CONTACTO
    ============================================= */
 #contacto {
-  background: var(--c-white);
+  background: var(--c-frost);
   border-top: 1px solid var(--c-border);
 }
 .contact-layout {
@@ -711,7 +748,7 @@ section { padding: var(--section-py) var(--container-px); }
   align-items: start;
 }
 @media (min-width: 900px) {
-  .contact-layout { grid-template-columns: 1fr 200px; gap: var(--sp-16); }
+  .contact-layout { grid-template-columns: 1fr 260px; gap: var(--sp-16); }
 }
 
 .contact-info {
@@ -734,7 +771,7 @@ section { padding: var(--section-py) var(--container-px); }
   color: var(--c-ink-soft);
   transition: color var(--ease);
 }
-.contact-info a:hover { color: var(--c-blue); }
+.contact-info a:hover { color: var(--c-cyan); }
 
 .contact-form { display: flex; flex-direction: column; gap: var(--sp-5); }
 .form-row { display: grid; grid-template-columns: 1fr; gap: var(--sp-5); }
@@ -750,7 +787,7 @@ section { padding: var(--section-py) var(--container-px); }
   padding: var(--sp-3) var(--sp-4);
   border: 1.5px solid var(--c-border-mid);
   border-radius: var(--radius-sm);
-  background: var(--c-frost);
+  background: var(--c-surface);
   color: var(--c-ink);
   outline: none;
   transition:
@@ -763,8 +800,8 @@ section { padding: var(--section-py) var(--container-px); }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--c-blue);
-  background: var(--c-white);
+  border-color: var(--c-cyan);
+  background: var(--c-surface);
   box-shadow: var(--shadow-focus);
 }
 .form-group input::placeholder,
@@ -783,7 +820,7 @@ section { padding: var(--section-py) var(--container-px); }
 .site-footer {
   background: var(--c-night);
   padding-top: var(--sp-16);
-  border-top: 3px solid rgba(62, 198, 212, 0.2);
+  border-top: 1px solid var(--c-border);
 }
 .footer-grid {
   display: grid;
@@ -832,4 +869,307 @@ section { padding: var(--section-py) var(--container-px); }
 .footer-bottom p {
   font-size: var(--text-sm);
   color: var(--c-od-faint);
+}
+
+
+/* =============================================
+   15. COMPONENTES EXTRA
+   ============================================= */
+
+/* Hero qualifier — para quién */
+.hero-qualifier {
+  font-size: var(--text-sm);
+  color: var(--c-ink-faint);
+  margin-top: var(--sp-5);
+  max-width: 460px;
+  text-align: center;
+  line-height: var(--lh-relaxed);
+}
+
+/* Persona initial badge */
+.persona-initial {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: rgba(62, 198, 212, 0.08);
+  border: 1px solid rgba(62, 198, 212, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: var(--fw-bold);
+  color: var(--c-cyan);
+  flex-shrink: 0;
+}
+
+/* Porque item destacado — OLIVA AI */
+.porque-item--featured {
+  grid-column: 1 / -1;
+  background: rgba(62, 198, 212, 0.04);
+  border-color: rgba(62, 198, 212, 0.18);
+}
+@media (min-width: 640px) {
+  .porque-item--featured { flex-direction: row; align-items: flex-start; gap: var(--sp-8); }
+  .porque-item--featured .porque-icon { flex-shrink: 0; }
+}
+
+/* Caso featured — FleteApp */
+.caso-featured {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+  padding: var(--sp-10);
+  border: 1px solid rgba(62, 198, 212, 0.15);
+  border-radius: var(--radius);
+  background: rgba(62, 198, 212, 0.025);
+  margin-bottom: var(--sp-8);
+}
+@media (min-width: 768px) {
+  .caso-featured { grid-template-columns: 160px 1fr; gap: var(--sp-12); align-items: center; }
+}
+.caso-featured-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--sp-6) var(--sp-4);
+  border: 1px solid rgba(62, 198, 212, 0.12);
+  border-radius: var(--radius);
+  background: rgba(62, 198, 212, 0.05);
+  gap: var(--sp-2);
+}
+.caso-featured-metric strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  color: var(--c-cyan);
+  font-weight: var(--fw-bold);
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+}
+.caso-featured-metric span {
+  font-size: var(--text-xs);
+  color: var(--c-ink-muted);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  max-width: 110px;
+}
+
+/* Sectores */
+.casos-sectores { display: flex; flex-direction: column; gap: var(--sp-4); }
+.casos-sectores-label {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--c-ink-faint);
+}
+.sectores-grid { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.sector-tag {
+  font-size: var(--text-sm);
+  color: var(--c-ink-muted);
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-full);
+  transition: border-color var(--ease), color var(--ease);
+}
+.sector-tag:hover { border-color: var(--c-border-mid); color: var(--c-ink-soft); }
+
+
+/* =============================================
+   16. LINEAR STYLE — Fases 1–4
+   ============================================= */
+
+/* Fase 1 — Hero más grande y más aire */
+#hero { min-height: 94vh; padding-top: var(--sp-24); padding-bottom: var(--sp-28); }
+#hero h1 {
+  font-size: clamp(3.2rem, 8.5vw, 7rem);
+  letter-spacing: -0.055em;
+  line-height: 0.94;
+  margin-bottom: var(--sp-8);
+}
+.hero-body { max-width: 480px; }
+.hero-illustration {
+  width: 100%;
+  max-width: 780px;
+  margin: var(--sp-16) auto 0;
+  display: block;
+  overflow: visible;
+}
+
+/* Fase 3 — Servicios narrativos */
+#servicios { padding: 0; }
+.servicios-header {
+  text-align: center;
+  padding-top: clamp(var(--sp-16), 8vw, var(--sp-24));
+  padding-bottom: var(--sp-4);
+}
+.narrative-block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-12);
+  align-items: center;
+  padding: clamp(var(--sp-14), 8vw, var(--sp-24)) var(--container-px);
+  max-width: var(--max-w);
+  margin: 0 auto;
+  border-top: 1px solid var(--c-border);
+}
+@media (min-width: 900px) {
+  .narrative-block {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(var(--sp-12), 6vw, var(--sp-20));
+  }
+  .narrative-block--reverse .narrative-visual { order: -1; }
+  .narrative-block:not(.narrative-block--reverse) .narrative-text { justify-self: start; }
+  .narrative-block--reverse .narrative-text { justify-self: end; }
+}
+.narrative-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  max-width: 400px;
+}
+.narrative-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--c-cyan);
+}
+.narrative-label::before {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 2px;
+  background: var(--c-cyan);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+.narrative-text h3 {
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  font-weight: var(--fw-bold);
+  color: var(--c-ink);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.narrative-text p { color: var(--c-ink-soft); line-height: var(--lh-relaxed); }
+.narrative-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.narrative-visual svg {
+  width: 100%;
+  height: auto;
+  max-width: 480px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Fase 4 — OLIVA node visual */
+.oliva-node-visual { margin-top: var(--sp-8); width: 100%; opacity: 0.88; }
+.oliva-node-visual svg { width: 100%; height: auto; display: block; }
+
+/* Caso card — editorial numerado sin imágenes */
+.caso-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-6);
+  padding: var(--sp-10);
+  border: 1px solid var(--c-od-border);
+  border-radius: var(--radius);
+  transition: border-color var(--ease-base);
+}
+@media (min-width: 768px) {
+  .caso-card { grid-template-columns: 64px 1fr; gap: var(--sp-10); align-items: start; }
+}
+.caso-card:hover { border-color: rgba(255, 255, 255, 0.16); }
+.caso-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: var(--fw-black);
+  color: rgba(255, 255, 255, 0.05);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  padding-top: var(--sp-1);
+  display: none;
+}
+@media (min-width: 768px) { .caso-num { display: block; } }
+
+/* Contact directo */
+.contact-direct {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding-bottom: var(--sp-6);
+  border-bottom: 1px solid var(--c-border);
+  margin-bottom: var(--sp-6);
+}
+.contact-direct-label {
+  font-size: var(--text-sm);
+  color: var(--c-ink-muted);
+}
+.contact-wa {
+  width: 100%;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+
+.servicio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+}
+.servicio-tag {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-ink-muted);
+  padding: 3px var(--sp-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-xs);
+}
+.estudio-stats {
+  display: flex;
+  gap: var(--sp-10);
+  margin-bottom: var(--sp-10);
+  flex-wrap: wrap;
+}
+.estudio-stat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  color: var(--c-cyan);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+}
+.estudio-stat span {
+  font-size: var(--text-sm);
+  color: var(--c-ink-muted);
+  margin-top: var(--sp-1);
+  display: block;
+}
+.caso-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+}
+.caso-stack-tag {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--c-cyan);
+  opacity: 0.55;
+  padding: 2px var(--sp-2);
+  border: 1px solid rgba(62, 198, 212, 0.18);
+  border-radius: var(--radius-xs);
 }
