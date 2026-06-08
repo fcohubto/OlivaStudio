@@ -1,6 +1,6 @@
 /* =============================================
    OLIVACRAFT — Estudio boutique
-   Arquitectura: tokens OLIVA OS · Figtree
+   Arquitectura: tokens OLIVA OS · Plus Jakarta Sans
    ============================================= */
 
 
@@ -11,9 +11,8 @@
 
   /* --- Colores de marca --- */
   --c-night:      #09090B;   /* negro carbón — bg base y secciones profundas */
-  --c-blue:       #3EC6D4;   /* cyan como acento interactivo principal */
   --c-blue-dark:  #2ba8b4;   /* cyan oscuro para hover */
-  --c-cyan:       #3EC6D4;
+  --c-cyan:       #3EC6D4;   /* cyan — acento interactivo principal */
   --c-frost:      #0E0E11;   /* elevación leve — hero, estudio, secciones alternas */
   --c-white:      #ffffff;
 
@@ -87,6 +86,7 @@
   --sp-4:  1rem;      /* 16px */
   --sp-5:  1.25rem;   /* 20px */
   --sp-6:  1.5rem;    /* 24px */
+  --sp-7:  1.75rem;   /* 28px */
   --sp-8:  2rem;      /* 32px */
   --sp-10: 2.5rem;    /* 40px */
   --sp-12: 3rem;      /* 48px */
@@ -147,7 +147,7 @@ button, input, select, textarea { font-family: inherit; font-size: inherit; }
 
 /* Foco visible — accesibilidad AA */
 :focus-visible {
-  outline: 2px solid var(--c-blue);
+  outline: 2px solid var(--c-cyan);
   outline-offset: 3px;
   border-radius: var(--radius-xs);
 }
@@ -214,7 +214,7 @@ section { padding: var(--section-py) var(--container-px); }
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
-  color: var(--c-blue);
+  color: var(--c-cyan);
   margin-bottom: var(--sp-3);
 }
 .section-label::before {
@@ -384,17 +384,23 @@ section { padding: var(--section-py) var(--container-px); }
    8. HERO
    ============================================= */
 #hero {
-  min-height: 88vh;
+  min-height: 94vh;
   display: flex;
   align-items: center;
-  padding-top: var(--sp-20);
-  padding-bottom: var(--sp-20);
+  padding-top: var(--sp-24);
+  padding-bottom: var(--sp-28);
   background:
     radial-gradient(ellipse 80% 60% at 50% -10%, rgba(62, 198, 212, 0.10) 0%, transparent 65%),
     radial-gradient(ellipse 50% 40% at 80% 80%, rgba(94, 106, 210, 0.06) 0%, transparent 60%),
     var(--c-night);
   position: relative;
   overflow: hidden;
+}
+#hero h1 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin-bottom: var(--sp-4);
 }
 #hero::before {
   content: '';
@@ -424,7 +430,7 @@ section { padding: var(--section-py) var(--container-px); }
   color: var(--c-ink-muted);
   margin-bottom: var(--sp-8);
 }
-.hero-inner h1 { margin-bottom: var(--sp-6); }
+
 .hero-actions {
   display: flex;
   flex-direction: column;
@@ -434,30 +440,7 @@ section { padding: var(--section-py) var(--container-px); }
 @media (min-width: 540px) {
   .hero-actions { flex-direction: row; }
 }
-.hero-stats {
-  display: flex;
-  gap: var(--sp-10);
-  margin-top: var(--sp-14);
-  padding-top: var(--sp-8);
-  border-top: 1px solid var(--c-border);
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.hero-stat { display: flex; flex-direction: column; align-items: center; gap: var(--sp-1); text-align: center; }
-.hero-stat strong {
-  font-family: var(--font-display);
-  font-size: var(--text-h2);
-  color: var(--c-cyan);
-  font-weight: var(--fw-bold);
-  line-height: 1;
-  letter-spacing: var(--ls-tight);
-}
-.hero-stat span {
-  font-size: var(--text-xs);
-  color: var(--c-ink-muted);
-  letter-spacing: var(--ls-wider);
-  text-transform: uppercase;
-}
+
 .hero-body {
   font-size: var(--text-lg);
   color: var(--c-ink-soft);
@@ -472,51 +455,7 @@ section { padding: var(--section-py) var(--container-px); }
 #servicios {
   background: var(--c-frost);
   border-top: 1px solid var(--c-border);
-}
-.servicios-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.servicio-card {
-  padding: var(--sp-10);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
-  border-bottom: 1px solid var(--c-border);
-  transition: background var(--ease-base);
-}
-.servicio-card:last-child { border-bottom: none; }
-.servicio-card:hover { background: rgba(255, 255, 255, 0.03); }
-.servicio-card:hover .servicio-icon {
-  background: var(--c-cyan);
-  color: var(--c-night);
-}
-.servicio-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-sm);
-  color: var(--c-cyan);
-  margin-bottom: var(--sp-3);
-  transition: background var(--ease-base), color var(--ease-base);
-  flex-shrink: 0;
-}
-.servicio-icon svg { width: 20px; height: 20px; }
-.servicio-card h3 { margin-top: var(--sp-1); }
-.servicio-card p  { margin-top: var(--sp-1); }
-
-@media (min-width: 768px) {
-  .servicios-grid { grid-template-columns: repeat(2, 1fr); }
-  .servicio-card  { border-bottom: none; border-right: 1px solid var(--c-border); }
-  .servicio-card:nth-child(2n) { border-right: none; }
-  .servicio-card:nth-child(1),
-  .servicio-card:nth-child(2)  { border-bottom: 1px solid var(--c-border); }
+  padding: 0;
 }
 
 
@@ -527,39 +466,6 @@ section { padding: var(--section-py) var(--container-px); }
   background: var(--c-night);
   border-top: 1px solid var(--c-border);
 }
-.porque-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--sp-4);
-}
-@media (min-width: 640px) {
-  .porque-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-5); }
-}
-.porque-item {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-4);
-  padding: var(--sp-8);
-  border: 1px solid var(--c-border-mid);
-  border-radius: var(--radius);
-  background: var(--c-surface);
-  transition: border-color var(--ease-base);
-}
-.porque-item:hover { border-color: rgba(255, 255, 255, 0.22); }
-.porque-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-sm);
-  color: var(--c-cyan);
-  flex-shrink: 0;
-}
-.porque-icon svg { width: 20px; height: 20px; }
-.porque-item h3 { color: var(--c-ink); }
-.porque-item p  { color: var(--c-ink-soft); line-height: var(--lh-relaxed); }
 
 /* Framework two-column layout */
 .framework-layout {
@@ -672,15 +578,7 @@ section { padding: var(--section-py) var(--container-px); }
 .framework-card-tag--accent::before {
   background: var(--c-ink-muted);
 }
-.porque-item--accent {
-  background: rgba(62, 198, 212, 0.08);
-  border-color: rgba(62, 198, 212, 0.28);
-}
-.porque-item--accent h3 {
-  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
-  color: var(--c-cyan);
-  letter-spacing: -0.03em;
-}
+
 .framework-visual {
   display: none;
 }
@@ -756,7 +654,7 @@ section { padding: var(--section-py) var(--container-px); }
   background: linear-gradient(to right, transparent, var(--c-cyan), transparent);
   opacity: 0.4;
 }
-#estructura .section-label { color: var(--c-blue); margin-bottom: var(--sp-8); }
+#estructura .section-label { color: var(--c-cyan); margin-bottom: var(--sp-8); }
 
 .estudio-layout {
   display: grid;
@@ -802,14 +700,7 @@ section { padding: var(--section-py) var(--container-px); }
   transition: border-color var(--ease-base);
 }
 .persona-card:hover { border-color: var(--c-border-mid); }
-.persona-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px solid var(--c-border);
-  flex-shrink: 0;
-}
+
 .persona-info { display: flex; flex-direction: column; gap: var(--sp-1); }
 .persona-name {
   font-size: var(--text-base);
@@ -965,16 +856,6 @@ section { padding: var(--section-py) var(--container-px); }
    15. COMPONENTES EXTRA
    ============================================= */
 
-/* Hero qualifier — para quién */
-.hero-qualifier {
-  font-size: var(--text-sm);
-  color: var(--c-ink-faint);
-  margin-top: var(--sp-5);
-  max-width: 460px;
-  text-align: center;
-  line-height: var(--lh-relaxed);
-}
-
 /* Persona initial badge */
 .persona-initial {
   width: 40px;
@@ -990,19 +871,6 @@ section { padding: var(--section-py) var(--container-px); }
   font-weight: var(--fw-bold);
   color: var(--c-cyan);
   flex-shrink: 0;
-}
-
-/* Porque item destacado — OLIVA */
-.porque-item--featured {
-  grid-column: 1 / -1;
-  background: rgba(62, 198, 212, 0.04);
-  border-color: rgba(62, 198, 212, 0.18);
-  padding: var(--sp-10);
-  margin-bottom: var(--sp-6);
-}
-@media (min-width: 640px) {
-  .porque-item--featured { flex-direction: row; align-items: flex-start; gap: var(--sp-8); }
-  .porque-item--featured .porque-icon { flex-shrink: 0; }
 }
 
 /* =============================================
@@ -1024,11 +892,11 @@ section { padding: var(--section-py) var(--container-px); }
 }
 .modal-overlay.is-open {
   opacity: 1;
-  pointer-events: all;
+  pointer-events: auto;
 }
 .modal-box {
   position: relative;
-  background: var(--c-od-bg-mid);
+  background: var(--c-surface);
   border: 1px solid var(--c-od-border);
   border-radius: var(--radius);
   width: 100%;
@@ -1099,18 +967,11 @@ section { padding: var(--section-py) var(--container-px); }
    16. LINEAR STYLE — Fases 1–4
    ============================================= */
 
-/* Hero — dos columnas */
-#hero { min-height: 94vh; padding-top: var(--sp-24); padding-bottom: var(--sp-28); }
-#hero h1 {
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  letter-spacing: -0.03em;
-  line-height: 1.08;
-  margin-bottom: var(--sp-4);
-}
+
 .hero-tagline {
   font-size: var(--text-lg);
   color: var(--c-cyan);
-  font-weight: var(--fw-mid);
+  font-weight: var(--fw-medium);
   margin-bottom: var(--sp-6);
   line-height: var(--lh-body);
 }
@@ -1135,7 +996,6 @@ section { padding: var(--section-py) var(--container-px); }
 }
 
 /* Fase 3 — Servicios narrativos */
-#servicios { padding: 0; }
 .servicios-header {
   text-align: center;
   padding-top: clamp(var(--sp-16), 8vw, var(--sp-24));
@@ -1213,29 +1073,6 @@ section { padding: var(--section-py) var(--container-px); }
   margin: 0 auto;
 }
 
-/* Fase 4 — OLIVA node visual */
-.oliva-node-visual { margin-top: var(--sp-8); width: 100%; opacity: 0.88; }
-.oliva-node-visual svg { width: 100%; height: auto; display: block; }
-
-
-/* Contact directo */
-.contact-direct {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-  padding-bottom: var(--sp-6);
-  border-bottom: 1px solid var(--c-border);
-  margin-bottom: var(--sp-6);
-}
-.contact-direct-label {
-  font-size: var(--text-sm);
-  color: var(--c-ink-muted);
-}
-.contact-wa {
-  width: 100%;
-  justify-content: center;
-  gap: var(--sp-3);
-}
 
 .servicio-tags {
   display: flex;
@@ -1253,27 +1090,7 @@ section { padding: var(--section-py) var(--container-px); }
   border: 1px solid var(--c-border);
   border-radius: var(--radius-xs);
 }
-.estudio-stats {
-  display: flex;
-  gap: var(--sp-10);
-  margin-bottom: var(--sp-10);
-  flex-wrap: wrap;
-}
-.estudio-stat strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: var(--text-h2);
-  color: var(--c-cyan);
-  font-weight: var(--fw-bold);
-  line-height: 1;
-  letter-spacing: var(--ls-tight);
-}
-.estudio-stat span {
-  font-size: var(--text-sm);
-  color: var(--c-ink-muted);
-  margin-top: var(--sp-1);
-  display: block;
-}
+
 /* =============================================
    17. WHATSAPP FLOTANTE
    ============================================= */
@@ -1310,7 +1127,7 @@ section { padding: var(--section-py) var(--container-px); }
 }
 .form-checkboxes legend {
   font-size: var(--text-sm);
-  font-weight: var(--fw-mid);
+  font-weight: var(--fw-medium);
   color: var(--c-ink-soft);
   margin-bottom: var(--sp-4);
   display: block;
@@ -1318,7 +1135,7 @@ section { padding: var(--section-py) var(--container-px); }
 .form-hint {
   font-size: var(--text-xs);
   color: var(--c-ink-muted);
-  font-weight: var(--fw-base);
+  font-weight: var(--fw-regular);
 }
 .checkbox-grid {
   display: grid;
