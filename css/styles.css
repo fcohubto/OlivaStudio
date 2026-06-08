@@ -875,6 +875,7 @@ section { padding: var(--section-py) var(--container-px); }
 .footer-bottom p {
   font-size: var(--text-sm);
   color: var(--c-od-faint);
+  text-align: center;
 }
 
 
