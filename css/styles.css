@@ -1309,3 +1309,71 @@ section { padding: var(--section-py) var(--container-px); }
   background: rgba(62, 198, 212, 0.06);
   color: var(--c-ink);
 }
+
+
+/* =============================================
+   404
+   ============================================= */
+#error-404 {
+  min-height: calc(100vh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-28) var(--container-px);
+  background:
+    radial-gradient(ellipse 70% 55% at 50% -5%, rgba(62, 198, 212, 0.08) 0%, transparent 65%),
+    var(--c-night);
+  text-align: center;
+}
+
+.error-404-inner {
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+}
+
+.error-404-code {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 18vw, 10rem);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-none);
+  letter-spacing: var(--ls-snug);
+  color: transparent;
+  background: linear-gradient(135deg, var(--c-ink) 40%, rgba(62, 198, 212, 0.55) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.error-404-visual {
+  width: 100%;
+  max-width: 460px;
+  opacity: 0.85;
+}
+
+.error-404-title {
+  font-size: var(--text-h2);
+  font-weight: var(--fw-bold);
+  color: var(--c-ink);
+  line-height: var(--lh-snug);
+}
+
+.error-404-body {
+  font-size: var(--text-base);
+  color: var(--c-ink-soft);
+  line-height: var(--lh-body);
+  max-width: 420px;
+}
+
+.error-404-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .error-404-inner { gap: var(--sp-8); }
+}
