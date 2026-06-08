@@ -109,6 +109,26 @@ if (modalOverlay) {
 }
 
 
+/* ── FAQ accordion ── */
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item     = btn.closest('.faq-item');
+    const isOpen   = item.classList.contains('is-open');
+    const isMobile = !window.matchMedia('(min-width: 1024px)').matches;
+
+    if (isMobile) {
+      document.querySelectorAll('.faq-item.is-open').forEach(open => {
+        open.classList.remove('is-open');
+        open.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    item.classList.toggle('is-open', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+
+
 /* ── Formulario de contacto ── */
 const contactForm    = document.getElementById('contacto-form');
 const contactSuccess = document.getElementById('contacto-success');
