@@ -1,0 +1,65 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,300&amp;family=Plus+Jakarta+Sans:wght@400;600&amp;display=swap');
+    </style>
+    <radialGradient id="topglow" cx="50%" cy="0%" r="70%">
+      <stop offset="0%"   stop-color="#3EC6D4" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#3EC6D4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bottomglow" cx="80%" cy="100%" r="40%">
+      <stop offset="0%"   stop-color="#5E6AD2" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#5E6AD2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="1200" height="630" fill="#09090B"/>
+
+  <!-- Glow superior -->
+  <ellipse cx="600" cy="0" rx="700" ry="420" fill="url(#topglow)"/>
+
+  <!-- Glow inferior derecho -->
+  <ellipse cx="1000" cy="630" rx="400" ry="300" fill="url(#bottomglow)"/>
+
+  <!-- Línea acento superior -->
+  <rect x="0" y="0" width="1200" height="2" fill="#3EC6D4" opacity="0.45"/>
+
+  <!-- Wordmark — Oliva (light italic cyan) + craft (bold white) + · (cyan) -->
+  <text x="600" y="295"
+        font-family="'Fraunces', Georgia, serif"
+        font-size="108"
+        text-anchor="middle"
+        dominant-baseline="alphabetic">
+    <tspan font-weight="300" font-style="italic" fill="#3EC6D4">Oliva</tspan><tspan font-weight="700" font-style="normal" fill="rgba(255,255,255,0.92)">craft</tspan><tspan font-weight="700" font-style="normal" fill="#3EC6D4">·</tspan>
+  </text>
+
+  <!-- Separador bajo wordmark -->
+  <line x1="480" y1="332" x2="720" y2="332" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- Tagline -->
+  <text x="600" y="374"
+        font-family="'Plus Jakarta Sans', system-ui, sans-serif"
+        font-size="24"
+        font-weight="400"
+        fill="rgba(255,255,255,0.45)"
+        text-anchor="middle"
+        letter-spacing="0.5">Consultora Tecnológica Boutique</text>
+
+  <!-- Servicios -->
+  <text x="600" y="422"
+        font-family="'Plus Jakarta Sans', system-ui, sans-serif"
+        font-size="15"
+        font-weight="600"
+        fill="rgba(255,255,255,0.22)"
+        text-anchor="middle"
+        letter-spacing="3">DISEÑO · DESARROLLO · AUTOMATIZACIÓN IA</text>
+
+  <!-- URL inferior derecha -->
+  <text x="1120" y="592"
+        font-family="'Plus Jakarta Sans', system-ui, sans-serif"
+        font-size="18"
+        font-weight="600"
+        fill="rgba(62,198,212,0.55)"
+        text-anchor="end">olivacraft.com</text>
+</svg>
