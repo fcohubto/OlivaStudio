@@ -1214,9 +1214,9 @@ section { padding: var(--section-py) var(--container-px); }
 }
 .faq-a-inner {
   overflow: hidden;
-  padding-top: var(--sp-5);
 }
 .faq-a-inner p {
+  padding-top: var(--sp-5);
   padding-bottom: var(--sp-7);
   color: var(--c-ink-muted);
   line-height: var(--lh-relaxed);
