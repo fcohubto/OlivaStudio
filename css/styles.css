@@ -521,99 +521,6 @@ section { padding: var(--section-py) var(--container-px); }
 
 
 /* =============================================
-   10. CASOS
-   ============================================= */
-#casos { background: var(--c-night); }
-#casos .section-label { color: rgba(62, 198, 212, 0.6); }
-#casos h2 { color: var(--c-white); }
-
-.casos-list { display: flex; flex-direction: column; gap: var(--sp-6); }
-
-.caso-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  border: 1px solid var(--c-od-border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: border-color var(--ease-base);
-}
-.caso-row:hover { border-color: rgba(255, 255, 255, 0.18); }
-
-@media (min-width: 768px) {
-  .caso-row { grid-template-columns: 2fr 3fr; }
-}
-
-.caso-images {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--c-od-bg-mid);
-  border-bottom: 1px solid var(--c-od-bg-mid);
-}
-@media (min-width: 768px) {
-  .caso-images {
-    border-bottom: none;
-    border-right: 1px solid var(--c-od-bg-mid);
-  }
-}
-.caso-img-main { aspect-ratio: 4/3; background: var(--c-od-bg); }
-.caso-img-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
-.caso-img-thumb  { aspect-ratio: 4/3; background: rgba(255, 255, 255, 0.03); }
-
-.caso-content {
-  padding: var(--sp-10);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-4);
-  justify-content: center;
-}
-.caso-meta { display: flex; gap: var(--sp-2); align-items: center; }
-.caso-industry {
-  font-size: var(--text-xs);
-  font-weight: var(--fw-bold);
-  letter-spacing: var(--ls-wider);
-  text-transform: uppercase;
-  color: var(--c-cyan);
-  opacity: 0.7;
-}
-.caso-service {
-  font-size: var(--text-xs);
-  font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--c-od-dim);
-}
-.caso-service::before {
-  content: '·';
-  margin-right: var(--sp-2);
-  color: var(--c-od-line);
-}
-.caso-content h3 {
-  font-size: var(--text-xl);
-  font-weight: var(--fw-semibold);
-  color: var(--c-od-text);
-  line-height: var(--lh-normal);
-}
-.caso-content p {
-  font-size: var(--text-base);
-  color: var(--c-od-body);
-  line-height: var(--lh-loose);
-}
-.caso-link {
-  margin-top: var(--sp-2);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2);
-  font-size: var(--text-sm);
-  font-weight: var(--fw-semibold);
-  color: var(--c-cyan);
-  opacity: 0.8;
-  transition: opacity var(--ease), gap var(--ease);
-}
-.caso-link:hover { opacity: 1; gap: var(--sp-3); }
-
-
-/* =============================================
    11. EL FRAMEWORK
    ============================================= */
 #framework {
@@ -1098,67 +1005,94 @@ section { padding: var(--section-py) var(--container-px); }
   .porque-item--featured .porque-icon { flex-shrink: 0; }
 }
 
-/* Caso featured — FleteApp */
-.caso-featured {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--sp-8);
-  padding: var(--sp-10);
-  border: 1px solid rgba(62, 198, 212, 0.15);
-  border-radius: var(--radius);
-  background: rgba(62, 198, 212, 0.025);
-  margin-bottom: var(--sp-8);
-}
-@media (min-width: 768px) {
-  .caso-featured { grid-template-columns: 160px 1fr; gap: var(--sp-12); align-items: center; }
-}
-.caso-featured-metric {
+/* =============================================
+   19. MODAL LEGAL
+   ============================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(6, 6, 8, 0.82);
+  backdrop-filter: blur(6px);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: var(--sp-6) var(--sp-4);
-  border: 1px solid rgba(62, 198, 212, 0.12);
+  padding: var(--sp-6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+.modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal-box {
+  position: relative;
+  background: var(--c-od-bg-mid);
+  border: 1px solid var(--c-od-border);
   border-radius: var(--radius);
-  background: rgba(62, 198, 212, 0.05);
-  gap: var(--sp-2);
+  width: 100%;
+  max-width: 560px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: var(--sp-10);
+  transform: translateY(12px);
+  transition: transform 0.22s ease;
 }
-.caso-featured-metric strong {
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  color: var(--c-cyan);
-  font-weight: var(--fw-bold);
-  line-height: 1.1;
-  letter-spacing: var(--ls-tight);
-}
-.caso-featured-metric span {
-  font-size: var(--text-xs);
+.modal-overlay.is-open .modal-box { transform: translateY(0); }
+.modal-close {
+  position: absolute;
+  top: var(--sp-5);
+  right: var(--sp-5);
+  background: none;
+  border: none;
+  cursor: pointer;
   color: var(--c-ink-muted);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  max-width: 110px;
+  padding: var(--sp-1);
+  line-height: 0;
+  transition: color var(--ease);
 }
-
-/* Sectores */
-.casos-sectores { display: flex; flex-direction: column; gap: var(--sp-4); }
-.casos-sectores-label {
-  font-size: var(--text-xs);
-  font-weight: var(--fw-bold);
-  letter-spacing: var(--ls-wider);
-  text-transform: uppercase;
-  color: var(--c-ink-faint);
+.modal-close:hover { color: var(--c-ink); }
+.modal-close svg { width: 18px; height: 18px; }
+.modal-tabs {
+  display: flex;
+  gap: var(--sp-1);
+  border-bottom: 1px solid var(--c-od-border);
+  margin-bottom: var(--sp-8);
+  padding-right: var(--sp-8);
 }
-.sectores-grid { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
-.sector-tag {
+.modal-tab {
+  background: none;
+  border: none;
+  cursor: pointer;
   font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
   color: var(--c-ink-muted);
-  padding: var(--sp-2) var(--sp-4);
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius-full);
-  transition: border-color var(--ease), color var(--ease);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color var(--ease), border-color var(--ease);
 }
-.sector-tag:hover { border-color: var(--c-border-mid); color: var(--c-ink-soft); }
+.modal-tab:hover { color: var(--c-ink-soft); }
+.modal-tab--active { color: var(--c-cyan); border-bottom-color: var(--c-cyan); }
+.modal-panel h3 {
+  font-size: var(--text-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--c-od-text);
+  margin-bottom: var(--sp-5);
+}
+.modal-panel p {
+  font-size: var(--text-sm);
+  color: var(--c-od-body);
+  line-height: var(--lh-loose);
+  margin-bottom: var(--sp-4);
+}
+.modal-panel p:last-child { margin-bottom: 0; }
+.modal-panel a { color: var(--c-cyan); }
+.modal-panel a:hover { text-decoration: underline; }
+.modal-panel--hidden { display: none; }
+
+
 
 
 /* =============================================
@@ -1283,31 +1217,6 @@ section { padding: var(--section-py) var(--container-px); }
 .oliva-node-visual { margin-top: var(--sp-8); width: 100%; opacity: 0.88; }
 .oliva-node-visual svg { width: 100%; height: auto; display: block; }
 
-/* Caso card — editorial numerado sin imágenes */
-.caso-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--sp-6);
-  padding: var(--sp-10);
-  border: 1px solid var(--c-od-border);
-  border-radius: var(--radius);
-  transition: border-color var(--ease-base);
-}
-@media (min-width: 768px) {
-  .caso-card { grid-template-columns: 64px 1fr; gap: var(--sp-10); align-items: start; }
-}
-.caso-card:hover { border-color: rgba(255, 255, 255, 0.16); }
-.caso-num {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: var(--fw-black);
-  color: rgba(255, 255, 255, 0.05);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  padding-top: var(--sp-1);
-  display: none;
-}
-@media (min-width: 768px) { .caso-num { display: block; } }
 
 /* Contact directo */
 .contact-direct {
@@ -1365,25 +1274,6 @@ section { padding: var(--section-py) var(--container-px); }
   margin-top: var(--sp-1);
   display: block;
 }
-.caso-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-2);
-  margin-top: var(--sp-2);
-}
-.caso-stack-tag {
-  font-size: var(--text-xs);
-  font-weight: var(--fw-semibold);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--c-cyan);
-  opacity: 0.55;
-  padding: 2px var(--sp-2);
-  border: 1px solid rgba(62, 198, 212, 0.18);
-  border-radius: var(--radius-xs);
-}
-
-
 /* =============================================
    17. WHATSAPP FLOTANTE
    ============================================= */
