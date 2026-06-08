@@ -402,17 +402,7 @@ section { padding: var(--section-py) var(--container-px); }
   line-height: 1.08;
   margin-bottom: var(--sp-4);
 }
-#hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  height: 80px;
-  background: linear-gradient(to bottom, var(--c-cyan), transparent);
-  opacity: 0.5;
-}
+
 .hero-inner {
   max-width: var(--max-w);
   margin: 0 auto;
@@ -523,7 +513,7 @@ section { padding: var(--section-py) var(--container-px); }
   font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: var(--fw-black);
-  color: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.18);
   line-height: 1;
 }
 .step-body {
