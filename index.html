@@ -509,7 +509,7 @@
           <p class="section-sub">Cuéntanos qué quieres construir. Respondemos en menos de 24 horas — directamente nosotros, no un asistente.</p>
         </div>
         <div class="contact-layout">
-        <form class="contact-form">
+        <form class="contact-form" id="contacto-form" novalidate>
             <div class="form-row">
               <div class="form-group">
                 <label for="nombre">Nombre y empresa</label>
@@ -537,8 +537,14 @@
               <label for="descripcion">Cuéntanos qué quieres construir</label>
               <textarea id="descripcion" name="descripcion" rows="5" placeholder="Mientras más detalle nos des, mejor podemos ayudarte..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg">Enviar mensaje</button>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAADSnY2mre0cXsjnc" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired"></div>
+            <button type="submit" class="btn btn-primary btn-lg" data-contacto-cta>Enviar mensaje</button>
           </form>
+
+          <div id="contacto-success" hidden>
+            <strong>Mensaje enviado</strong>
+            <p>Te respondemos en menos de 24 horas — directamente nosotros, no un asistente.</p>
+          </div>
 
           <aside class="contact-info" aria-label="Contacto directo">
             <div class="contact-info-item">
@@ -631,6 +637,7 @@
     </div>
   </div>
 
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="js/main.js" defer></script>
 
 </body>

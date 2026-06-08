@@ -1,3 +1,9 @@
+/* ── Turnstile callbacks (globales, antes del DOMContentLoaded) ── */
+let turnstileToken = '';
+window.onTurnstileSuccess  = token => { turnstileToken = token; };
+window.onTurnstileExpired  = ()    => { turnstileToken = ''; };
+
+
 /* ── Nav mobile ── */
 const toggle    = document.querySelector('.nav-toggle');
 const mobileNav = document.querySelector('.nav-mobile');
@@ -103,10 +109,89 @@ if (modalOverlay) {
 }
 
 
-/* ── Formulario ── */
-const contactForm = document.querySelector('.contact-form');
+/* ── Formulario de contacto ── */
+const contactForm    = document.getElementById('contacto-form');
+const contactSuccess = document.getElementById('contacto-success');
+
 if (contactForm) {
+  const fieldNombre = contactForm.querySelector('#nombre');
+  const fieldEmail  = contactForm.querySelector('#email');
+  const fieldDesc   = contactForm.querySelector('#descripcion');
+  const submitBtn   = contactForm.querySelector('[data-contacto-cta]');
+
+  function setValid(el) { el.classList.add('is-valid'); el.classList.remove('is-error'); }
+  function setError(el) { el.classList.add('is-error');  el.classList.remove('is-valid'); }
+  function clearState(el) { el.classList.remove('is-valid', 'is-error'); }
+
+  function validateNombre() {
+    const ok = fieldNombre.value.trim().length >= 2;
+    ok ? setValid(fieldNombre) : setError(fieldNombre);
+    return ok;
+  }
+
+  function validateEmail() {
+    const ok = fieldEmail.checkValidity() && fieldEmail.value.trim() !== '';
+    ok ? setValid(fieldEmail) : setError(fieldEmail);
+    return ok;
+  }
+
+  fieldNombre.addEventListener('blur',  validateNombre);
+  fieldEmail.addEventListener('blur',   validateEmail);
+  [fieldNombre, fieldEmail, fieldDesc].forEach(f => {
+    if (f) f.addEventListener('input', () => clearState(f));
+  });
+
   contactForm.addEventListener('submit', e => {
     e.preventDefault();
+
+    const allValid = [validateNombre(), validateEmail()].every(Boolean);
+
+    if (!allValid) {
+      const firstError = contactForm.querySelector('.is-error');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    if (!turnstileToken) {
+      if (window.turnstile) window.turnstile.reset();
+      return;
+    }
+
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.classList.add('btn--loading');
+    submitBtn.setAttribute('aria-disabled', 'true');
+
+    const formData = new FormData(contactForm);
+    formData.set('cf-turnstile-response', turnstileToken);
+
+    fetch('/send.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        turnstileToken = '';
+        if (window.turnstile) window.turnstile.reset();
+        submitBtn.textContent = '✓ Mensaje enviado';
+        submitBtn.classList.remove('btn--loading');
+        submitBtn.classList.add('btn--sent');
+        setTimeout(() => {
+          contactForm.reset();
+          [fieldNombre, fieldEmail, fieldDesc].forEach(f => { if (f) clearState(f); });
+          contactForm.hidden = true;
+          if (contactSuccess) {
+            contactSuccess.hidden = false;
+            contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 1200);
+      })
+      .catch(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.classList.remove('btn--loading');
+        submitBtn.removeAttribute('aria-disabled');
+        turnstileToken = '';
+        if (window.turnstile) window.turnstile.reset();
+      });
   });
 }
