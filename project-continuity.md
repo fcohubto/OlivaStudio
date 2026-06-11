@@ -7,7 +7,30 @@
 
 ---
 
-## Estado Actual — 2026-06-05 (sesión 3)
+## Estado Actual — 2026-06-11
+
+### Completado sesión 2026-06-11
+
+- **404.html** — página de error creada con SVG y estilos propios (commit 80f2fb5)
+- **auditoria-2026-06-09.html** — informe de auditoría SEO/UX commiteado (commit 5b3fa08)
+- **Footer Navegación** — FAQ agregado a `index.html` y `404.html`, orden alineado con navlinks: Capacidades → El Framework → Estructura → FAQ → Contacto (commits 7fea7bb, f9f9073)
+
+### Pendiente
+
+- **Microsoft Clarity** — integración pendiente
+- **Configurar 404 en servidor** — apuntar 404.html en hosting
+- **Fotos reales** Francisco y Anelisse → reemplazar badges iniciales F/A
+- **Backend formulario** — no envía (sin backend/servicio activo)
+- **caso-fletes.html** — actualizar al dark theme (sin link desde index por ahora)
+- **Deploy** a olivacraft.com (confirmar DNS antes de push)
+
+### Siguiente Paso Exacto
+
+Configurar Microsoft Clarity (snippet en `<head>` de `index.html` y `404.html`) + configurar ruta 404 en servidor.
+
+---
+
+## Estado Anterior — 2026-06-05 (sesión 3)
 
 ### Completado sesión 2026-06-05 (sesión 3)
 
@@ -69,27 +92,7 @@
 - SVG font-sizes: todos aumentados 10% (6.5→7.2, 7→7.7, 7.5→8.3, 8→8.8, 8.5→9.4, 9→9.9)
 - WhatsApp: glow verde removido → sombra neutra
 
-### Pendiente
-
-- **Revisión visual en browser** — validar framework section en desktop, tablet y mobile
-- **Fotos reales** Francisco y Anelisse → reemplazar badges iniciales F/A
-- **Backend formulario** — no envía (sin backend/servicio activo)
-- **caso-fletes.html** — actualizar al dark theme (sin link desde index por ahora)
-- **SEO** — meta description, og:tags, sitemap
-- **Deploy** a olivacraft.com (confirmar DNS antes de push)
-
-### Bloqueado
-
-- Deploy: pendiente revisión visual completa en browser + decisión dominio
-
----
-
-## Siguiente Paso Exacto
-
-1. Levantar servidor local: `python -m http.server 8001` desde `Productos/olivacraft.com 2.0/`
-2. Revisar en browser: desktop (framework dos columnas, hero dos columnas), tablet 768–1023px (hamburger nav, capacidades sin espacio vacío), mobile 375px (menú separadores, CTAs)
-3. Corregir lo que rompa
-4. Deploy a GitHub Pages
+_(ver estado actual arriba)_
 
 ---
 
@@ -127,3 +130,4 @@
 | 2026-06-01 | Prototipo base, estructura, copy v1 |
 | 2026-06-02 | Dark theme + copy comercial + Linear-style 4 fases |
 | 2026-06-05 | Reposicionamiento completo: hero 2 cols, framework 2 cols, nav fix, responsive, SVG fonts, WA float |
+| 2026-06-11 | 404.html, auditoría SEO/UX, FAQ en footer (index + 404) |
