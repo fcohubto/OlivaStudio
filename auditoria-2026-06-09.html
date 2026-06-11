@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auditoría — olivacraft.com · 09 Jun 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --c-night:     #09090B;
+      --c-frost:     #0E0E11;
+      --c-surface:   #141417;
+      --c-surface-2: #1A1A1E;
+      --c-cyan:      #3EC6D4;
+      --c-cyan-dim:  rgba(62, 198, 212, 0.12);
+      --c-cyan-mid:  rgba(62, 198, 212, 0.25);
+      --c-red:       #F87171;
+      --c-red-dim:   rgba(248, 113, 113, 0.10);
+      --c-amber:     #FBBF24;
+      --c-amber-dim: rgba(251, 191, 36, 0.10);
+      --c-green:     #34D399;
+      --c-green-dim: rgba(52, 211, 153, 0.10);
+      --c-ink:       rgba(255,255,255, 0.92);
+      --c-ink-soft:  rgba(255,255,255, 0.60);
+      --c-ink-muted: rgba(255,255,255, 0.38);
+      --c-ink-faint: rgba(255,255,255, 0.18);
+      --c-border:    rgba(255,255,255, 0.07);
+      --c-border-mid:rgba(255,255,255, 0.13);
+      --font:        'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-d:      'Fraunces', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      font-size: 1rem;
+      background: var(--c-night);
+      color: var(--c-ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--c-cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── HEADER ── */
+    .doc-header {
+      background: var(--c-frost);
+      border-bottom: 1px solid var(--c-border);
+      padding: 3rem 0 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .doc-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--c-cyan), transparent);
+    }
+    .doc-header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .doc-meta {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-cyan);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .doc-meta::before {
+      content: '';
+      display: block;
+      width: 16px; height: 2px;
+      background: var(--c-cyan);
+      border-radius: 999px;
+    }
+    .doc-header h1 {
+      font-family: var(--font-d);
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--c-ink);
+      margin-bottom: 0.75rem;
+    }
+    .doc-header p {
+      font-size: 1rem;
+      color: var(--c-ink-soft);
+      max-width: 580px;
+    }
+    .doc-header-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .stat-n {
+      font-family: var(--font-d);
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--c-ink);
+    }
+    .stat-n.amber  { color: var(--c-amber); }
+    .stat-n.green  { color: var(--c-green); }
+    .stat-n.muted  { color: var(--c-ink-muted); }
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-ink-muted);
+    }
+    .stat-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--c-border-mid);
+      align-self: center;
+    }
+    .resolved-note {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--c-green-dim);
+      border: 1px solid rgba(52,211,153,0.2);
+      border-radius: 8px;
+      padding: 0.5rem 0.875rem;
+      font-size: 0.8125rem;
+      color: var(--c-green);
+      font-weight: 500;
+    }
+    .resolved-note::before {
+      content: '✓';
+      font-weight: 700;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+    }
+    .toc-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-ink-muted);
+      margin-bottom: 1rem;
+    }
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .toc-list li { display: flex; align-items: baseline; gap: 0.75rem; }
+    .toc-list a {
+      font-size: 0.9375rem;
+      color: var(--c-ink-soft);
+      transition: color 0.15s;
+    }
+    .toc-list a:hover { color: var(--c-ink); text-decoration: none; }
+    .toc-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .toc-badge.alto    { background: var(--c-amber-dim); color: var(--c-amber); border: 1px solid rgba(251,191,36,0.25); }
+    .toc-badge.medio   { background: rgba(255,255,255,0.06); color: var(--c-ink-soft); border: 1px solid var(--c-border-mid); }
+    .toc-badge.bajo    { background: rgba(255,255,255,0.03); color: var(--c-ink-muted); border: 1px solid var(--c-border); }
+    .toc-badge.ok      { background: var(--c-green-dim); color: var(--c-green); border: 1px solid rgba(52,211,153,0.25); }
+
+    /* ── MAIN ── */
+    main { padding: 0 0 5rem; }
+
+    /* ── GRUPO ── */
+    .group { padding: 3rem 0 0; }
+    .group-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--c-border);
+    }
+    .group-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .group-icon.alto    { background: var(--c-amber-dim); }
+    .group-icon.medio   { background: rgba(255,255,255,0.05); }
+    .group-icon.bajo    { background: rgba(255,255,255,0.03); }
+    .group-icon.ok      { background: var(--c-green-dim); }
+    .group-title {
+      font-family: var(--font-d);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--c-ink);
+    }
+    .group-sub {
+      font-size: 0.8125rem;
+      color: var(--c-ink-muted);
+      margin-top: 0.1rem;
+    }
+    .group-badge {
+      margin-left: auto;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .group-badge.alto    { background: var(--c-amber-dim); color: var(--c-amber); border: 1px solid rgba(251,191,36,0.3); }
+    .group-badge.medio   { background: rgba(255,255,255,0.06); color: var(--c-ink-soft); border: 1px solid var(--c-border-mid); }
+    .group-badge.bajo    { background: rgba(255,255,255,0.03); color: var(--c-ink-muted); border: 1px solid var(--c-border); }
+    .group-badge.ok      { background: var(--c-green-dim); color: var(--c-green); border: 1px solid rgba(52,211,153,0.3); }
+
+    /* ── FINDING ── */
+    .findings { display: flex; flex-direction: column; gap: 1rem; }
+
+    .finding {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .finding.alto    { border-left: 3px solid var(--c-amber); }
+    .finding.medio   { border-left: 3px solid var(--c-border-mid); }
+    .finding.bajo    { border-left: 3px solid var(--c-border); }
+
+    .finding-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+    }
+    .finding-num {
+      font-family: var(--font-d);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--c-ink-faint);
+      line-height: 1;
+      min-width: 1.5rem;
+      padding-top: 0.1rem;
+    }
+    .finding-title-block { flex: 1; }
+    .finding-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--c-ink);
+      line-height: 1.3;
+      margin-bottom: 0.3rem;
+    }
+    .finding-scope {
+      font-size: 0.75rem;
+      color: var(--c-ink-muted);
+      font-family: monospace;
+      letter-spacing: 0.04em;
+    }
+    .finding-chips {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+    .chip {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .chip.impacto-alto    { background: var(--c-amber-dim); color: var(--c-amber); border: 1px solid rgba(251,191,36,0.2); }
+    .chip.impacto-medio   { background: rgba(255,255,255,0.06); color: var(--c-ink-soft); border: 1px solid var(--c-border-mid); }
+    .chip.impacto-bajo    { background: rgba(255,255,255,0.03); color: var(--c-ink-muted); border: 1px solid var(--c-border); }
+    .chip.esfuerzo-trivial { background: var(--c-green-dim); color: var(--c-green); border: 1px solid rgba(52,211,153,0.2); }
+    .chip.esfuerzo-bajo   { background: var(--c-green-dim); color: var(--c-green); border: 1px solid rgba(52,211,153,0.2); }
+    .chip.esfuerzo-medio  { background: rgba(251,191,36,0.08); color: var(--c-amber); border: 1px solid rgba(251,191,36,0.2); }
+
+    .finding-body {
+      padding: 0 1.5rem 1.5rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .finding-desc {
+      font-size: 0.9375rem;
+      color: var(--c-ink-soft);
+      line-height: 1.7;
+    }
+    .finding-desc strong { color: var(--c-ink); font-weight: 600; }
+
+    .finding-detail {
+      background: var(--c-surface-2);
+      border: 1px solid var(--c-border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .detail-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-ink-muted);
+    }
+    .detail-text {
+      font-size: 0.875rem;
+      color: var(--c-ink-soft);
+      line-height: 1.6;
+    }
+    .detail-text.fix { color: var(--c-cyan); }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.82em;
+      background: rgba(255,255,255,0.06);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--c-ink);
+    }
+    pre {
+      background: var(--c-surface-2);
+      border: 1px solid var(--c-border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      font-size: 0.8125rem;
+      color: var(--c-ink-soft);
+      line-height: 1.6;
+      font-family: 'Courier New', monospace;
+    }
+    pre .hl   { color: var(--c-cyan); }
+    pre .dim  { color: var(--c-ink-muted); }
+    pre .bad  { color: #F87171; }
+    pre .good { color: var(--c-green); }
+
+    /* ── OK GRID ── */
+    .ok-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+    }
+    .ok-item {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-left: 3px solid var(--c-green);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .ok-check { color: var(--c-green); font-size: 0.875rem; margin-top: 0.1rem; flex-shrink: 0; }
+    .ok-text { font-size: 0.875rem; color: var(--c-ink-soft); line-height: 1.5; }
+    .ok-text strong { color: var(--c-ink); font-weight: 600; display: block; margin-bottom: 0.2rem; }
+
+    /* ── TABLA ── */
+    .summary-table-wrap {
+      margin-top: 3rem;
+      border: 1px solid var(--c-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .summary-table-head {
+      background: var(--c-surface);
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--c-border);
+    }
+    .summary-table-head span {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-ink-muted);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead tr { background: var(--c-surface); }
+    thead th {
+      padding: 0.85rem 1.25rem;
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-ink-muted);
+      border-bottom: 1px solid var(--c-border);
+    }
+    tbody tr { border-bottom: 1px solid var(--c-border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,0.02); }
+    td { padding: 0.85rem 1.25rem; color: var(--c-ink-soft); vertical-align: top; }
+    td:first-child { color: var(--c-ink-muted); font-family: monospace; font-size: 0.8rem; }
+    td strong { color: var(--c-ink); font-weight: 600; }
+
+    .td-sev {
+      display: inline-flex;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .td-sev.alto  { background: var(--c-amber-dim); color: var(--c-amber); border: 1px solid rgba(251,191,36,0.2); }
+    .td-sev.medio { background: rgba(255,255,255,0.05); color: var(--c-ink-soft); border: 1px solid var(--c-border-mid); }
+    .td-sev.bajo  { background: rgba(255,255,255,0.03); color: var(--c-ink-muted); border: 1px solid var(--c-border); }
+
+    .td-ef { font-size: 0.75rem; }
+    .td-ef.trivial, .td-ef.bajo { color: var(--c-green); }
+    .td-ef.medio { color: var(--c-amber); }
+
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: var(--c-border); margin: 2.5rem 0 0; }
+
+    /* ── FOOTER ── */
+    .doc-footer {
+      background: var(--c-frost);
+      border-top: 1px solid var(--c-border);
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .doc-footer p { font-size: 0.8125rem; color: var(--c-ink-muted); }
+    .doc-footer strong { color: var(--c-ink-soft); }
+
+    @media (max-width: 600px) {
+      .doc-header-stats { gap: 1.25rem; }
+      .finding-body { padding-left: 1.5rem; }
+      .finding-chips { display: none; }
+      .ok-grid { grid-template-columns: 1fr; }
+      thead th:nth-child(3), thead th:nth-child(4),
+      td:nth-child(3), td:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="doc-header-inner">
+    <p class="doc-meta">Olivacraft · Auditoría live · olivacraft.com · 09 Jun 2026</p>
+    <h1>olivacraft.com — Informe de mejoras</h1>
+    <p>Revisión del sitio en producción. Cubre accesibilidad, UX, copy y mantenibilidad. Los 4 bloqueadores originales de go-live fueron verificados y están resueltos en el servidor.</p>
+    <div class="doc-header-stats">
+      <div class="stat">
+        <span class="stat-n amber">3</span>
+        <span class="stat-label">Alto</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n" style="color:var(--c-ink-soft)">4</span>
+        <span class="stat-label">Medio</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n muted">3</span>
+        <span class="stat-label">Bajo</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n green">7</span>
+        <span class="stat-label">OK · Conservar</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="resolved-note">4 bloqueadores resueltos en producción — og:image, send.php, analytics, 404</div>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <nav class="toc" aria-label="Índice">
+    <p class="toc-title">Índice</p>
+    <ul class="toc-list">
+      <li><span class="toc-badge alto">Alto</span><a href="#g-alto">Accesibilidad y coherencia UX</a></li>
+      <li><span class="toc-badge medio">Medio</span><a href="#g-medio">Copy y conversión</a></li>
+      <li><span class="toc-badge bajo">Bajo</span><a href="#g-bajo">Mantenibilidad</a></li>
+      <li><span class="toc-badge ok">OK</span><a href="#g-ok">Puntos fuertes a conservar</a></li>
+      <li><span class="toc-badge medio">Tabla</span><a href="#g-tabla">Resumen priorizado</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ══════════════════════════════════
+       ALTO
+  ════════════════════════════════════ -->
+  <section class="group" id="g-alto">
+    <div class="group-header">
+      <div class="group-icon alto">⚠️</div>
+      <div>
+        <div class="group-title">Accesibilidad y coherencia UX</div>
+        <div class="group-sub">Afectan experiencia real de usuarios y cumplimiento de estándares propios del sistema OLIVA.</div>
+      </div>
+      <span class="group-badge alto">Alto · 3</span>
+    </div>
+
+    <div class="findings">
+
+      <article class="finding alto" id="f01">
+        <div class="finding-head">
+          <span class="finding-num">01</span>
+          <div class="finding-title-block">
+            <div class="finding-title">Textos sistémicamente por debajo de 14px</div>
+            <div class="finding-scope">css/styles.css · --text-xs (11.5px) · 10+ componentes afectados</div>
+          </div>
+          <div class="finding-chips">
+            <span class="chip impacto-alto">Accesibilidad AA</span>
+            <span class="chip esfuerzo-bajo">Esfuerzo bajo</span>
+          </div>
+        </div>
+        <div class="finding-body">
+          <p class="finding-desc">
+            CLAUDE.md define <strong>14px como mínimo absoluto en pantalla</strong> para cualquier texto legible. El sistema de tokens define <code>--text-xs: 0.72rem</code> (~11.5px) y <code>--text-2xs: 0.68rem</code> (~11px). Ambos se usan en elementos que el usuario necesita leer.
+          </p>
+          <div class="finding-detail">
+            <span class="detail-label">Componentes afectados</span>
+            <pre><span class="bad">--text-xs (11.5px):</span>  .section-label, .narrative-label, .section-eyebrow,
+                     .framework-card-tag, .servicio-tag, .form-hint,
+                     .equipo-titulo, .contact-info-label, .framework-oliva-sub
+
+<span class="bad">--text-2xs (11px):</span>  .footer-col-title  ← peor infractor</pre>
+          </div>
+          <div class="finding-detail">
+            <span class="detail-label">Fix recomendado</span>
+            <p class="detail-text fix">
+              Redefinir <code>--text-xs</code> a <code>0.875rem</code> (14px) y eliminar <code>--text-2xs</code>. Todos estos elementos son etiquetas uppercase con letter-spacing amplio — a 14px siguen siendo compactos visualmente y pasan el mínimo de accesibilidad. Alternativa: reemplazar todos los usos de <code>--text-xs</code> por <code>--text-sm</code> (que ya vale 0.875rem en este sistema).
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="finding alto" id="f02">
+        <div class="finding-head">
+          <span class="finding-num">02</span>
+          <div class="finding-title-block">
+            <div class="finding-title">Automatización IA: servicio en el form, invisible en Capacidades</div>
+            <div class="finding-scope">index.html · #servicios · form#contacto-form</div>
+          </div>
+          <div class="finding-chips">
+            <span class="chip impacto-alto">Conversión</span>
+            <span class="chip esfuerzo-medio">Esfuerzo medio</span>
+          </div>
+        </div>
+        <div class="finding-body">
+          <p class="finding-desc">
+            El formulario ofrece <em>"Automatización IA"</em> como opción de contacto. La sección Capacidades muestra 4 narrative blocks: UI/UX, Desarrollo Web, Auditoría UX, Estrategia Digital. <strong>Automatización IA — el servicio de mayor demanda y búsqueda activa hoy — no tiene presencia narrativa en el sitio.</strong> Un prospecto que llega por ese interés no encuentra ninguna propuesta de valor antes de contactar.
+          </p>
+          <div class="finding-detail">
+            <span class="detail-label">Disconnect actual</span>
+            <pre><span class="dim">Checkboxes del form:</span>
+  ✓ Diseño y Desarrollo Web
+  ✓ Sistema / App Web
+  ✓ UX / UI
+  ✓ Sistema de Gestión
+  <span class="hl">✓ Automatización IA        ← sin sección narrativa</span>
+  ✓ Auditoría Web
+  ✓ Product Discovery
+  ✓ No sé aún — necesito orientación</pre>
+          </div>
+          <div class="finding-detail">
+            <span class="detail-label">Opciones de fix</span>
+            <p class="detail-text fix">
+              Opción A: Agregar un 5.° narrative block "Automatización IA Powered" entre Auditoría UX y Estrategia Digital. Texto corto, SVG ilustrativo reutilizando el estilo existente.<br><br>
+              Opción B (mínimo): En el cuerpo del Hero o en la descripción de Desarrollo Web, mencionar explícitamente las automatizaciones IA como capacidad integrada del framework OLIVA.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="finding alto" id="f03">
+        <div class="finding-head">
+          <span class="finding-num">03</span>
+          <div class="finding-title-block">
+            <div class="finding-title">FAQ ausente del footer — inconsistencia de navegación</div>
+            <div class="finding-scope">index.html · .footer-col "Navegación"</div>
+          </div>
+          <div class="finding-chips">
+            <span class="chip impacto-alto">Coherencia</span>
+            <span class="chip esfuerzo-trivial">Trivial</span>
+          </div>
+        </div>
+        <div class="finding-body">
+          <p class="finding-desc">
+            Nav desktop: Capacidades / El Framework / Estructura / <strong>FAQ</strong> / Contacto.
+            Footer nav: Capacidades / El Framework / Estructura / Contacto. <strong>FAQ no aparece.</strong> El usuario que llega al footer buscando más información no tiene acceso directo al FAQ desde ahí.
+          </p>
+          <div class="finding-detail">
+            <span class="detail-label">Fix — una línea</span>
+            <pre><span class="dim">&lt;ul role="list"&gt;
+  &lt;li&gt;&lt;a href="#servicios"&gt;Capacidades&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#framework"&gt;El Framework&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#estructura"&gt;Estructura&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="good">&lt;li&gt;&lt;a href="#faq"&gt;FAQ&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="dim">&lt;li&gt;&lt;a href="#contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</span></pre>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════
+       MEDIO
+  ════════════════════════════════════ -->
+  <div class="divider"></div>
+  <section class="group" id="g-medio">
+    <div class="group-header">
+      <div class="group-icon medio">📋</div>
+      <div>
+        <div class="group-title">Copy y conversión</div>
+        <div class="group-sub">Impactan persuasión y coherencia del mensaje. Sin urgencia inmediata.</div>
+      </div>
+      <span class="group-badge medio">Medio · 4</span>
+    </div>
+
+    <div class="findings">
+
+      <article class="finding medio" id="f04">
+        <div class="finding-head">
+          <span class="finding-num">04</span>
+          <div class="finding-title-block">
+            <div class="finding-title">Hero eyebrow y tagline dicen lo mismo</div>
+            <div class="finding-scope">index.html · #hero · .section-eyebrow + .hero-tagline</div>
+          </div>
+          <div class="finding-chips">
+            <span class="chip impacto-medio">Copy</span>
+            <span class="chip esfuerzo-bajo">Esfuerzo bajo</span>
+          </div>
+        </div>
+        <div class="finding-body">
+          <p class="finding-desc">
+            El eyebrow y el tagline coexisten en las primeras 3 líneas del hero repitiendo el mismo mensaje sobre OLIVA y la IA.
+          </p>
+          <div class="finding-detail">
+            <span class="detail-label">Redundancia actual</span>
+            <pre><span class="dim">Eyebrow:</span>  "Consultora Tecnológica · <span class="bad">Framework OLIVA</span> · <span class="bad">IA-Driven</span>"
+<span class="dim">H1:</span>        "Construimos sistemas digitales robustos"
+<span class="dim">Tagline:</span>  "Acelerados por <span class="bad">OLIVA</span>, nuestro <span class="bad">framework IA</span>"</pre>
+          </div>
+          <div class="finding-detail">
+            <span class="detail-label">Alternativa</span>
+            <p class="detail-text fix">Redirigir el eyebrow a contexto diferente: <code>"Santiago, Chile · Consultora Tecnológica Boutique"</code>. O eliminarlo. La tagline ya introduce OLIVA — el eyebrow no necesita anticiparlo.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="finding medio" id="f05">
+        <div class="finding-head">
+          <span class="finding-num">05</span>
+          <div class="finding-title-block">
+            <div class="finding-title">H1 hero restringido a 3rem — desaprovecha pantallas grandes</div>
+            <div class="finding-scope">css/styles.css · #hero h1 · clamp(1.9rem, 4vw, 3rem)</div>
+          </div>
+          <div class="finding-chips">
+            <span class="chip impacto-medio">Impacto visual</span>
+            <span class="chip esfuerzo-trivial">Trivial</span>
+          </div>
+        </div>
+        <div class="finding-body">
+          <p class="finding-desc">
+            El CSS base define <code>h1 { font-size: clamp(2.75rem, 7vw, 5rem) }</code>. La override del hero lo limita a <code>clamp(1.9rem, 4vw, 3rem)</code> — topa en <strong>48px en desktop</strong>. Con la grilla de dos columnas hay espacio para un H1 más impactante.
+          </p>
+          <div class="finding-detail">
+            <span class="detail-label">Fix sugerido</span>
+            <pre><span class="dim">#hero h1 {</span>
+  <span class="bad">font-size: clamp(1.9rem, 4vw, 3rem);</span>      <span class="dim">← actual (máx 48px)</span>
+  <span class="good">font-size: clamp(2.1rem, 4.5vw, 3.75rem);</span> <span class="dim">← sugerido (máx ~60px)</span>
+<span class="dim">}</span></pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="finding medio" id="f06">
+        <div class="finding-head">
+          <span class="finding-num">06</span>
+          <div class="finding-title-block">
+            <div class="finding-title">Anelisse aparece solo con nombre de pila</div>
+            <div class="finding-scope">index.html · #estructura · .persona-name</div>
+          </div>
+          <div class="finding-chips">
+            <span class="chip impacto-medio">Credibilidad</span>
+            <span class="chip esfuerzo-trivial">Trivial</span>
+          </div>
+        </div>
+        <div class="finding-body">
+          <p class="finding-desc">
+            Francisco aparece como <em>"Francisco Orellana"</em> con nombre y apellido. Anelisse aparece solo como <em>"Anelisse"</em>. En una sección que vende rigor profesional y equipo de confianza, la asimetría de identificación resta credibilidad.
+          </p>
+          <div class="finding-detail">
+            <span class="detail-label">Fix</span>
+            <p class="detail-text fix">Agregar el apellido de Anelisse, o adoptar formato consistente: solo nombre de pila para ambos. Cualquier opción es válida — lo que no es válido es la asimetría.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="finding medio" id="f07">
+        <div class="finding-head">
+          <span class="finding-num">07</span>
+          <div class="finding-title-block">
+            <div class="finding-title">Sin sitemap.xml ni robots.txt</div>
+            <div class="finding-scope">raíz del dominio · SEO técnico</div>
+          </div>
+          <div class="finding-chips">
+            <span class="chip impacto-medio">SEO</span>
+            <span class="chip esfuerzo-bajo">Esfuerzo bajo</span>
+          </div>
+        </div>
+        <div class="finding-body">
+          <p class="finding-desc">
+            No hay <code>sitemap.xml</code> ni <code>robots.txt</code> en el servidor. Para un sitio de una sola página el impacto es moderado — Google lo indexa igual — pero el sitemap acelera el crawling y el robots.txt evita comportamientos inesperados de bots.
+          </p>
+          <div class="finding-detail">
+            <span class="detail-label">sitemap.xml mínimo</span>
+            <pre><span class="dim">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;</span><span class="hl">https://olivacraft.com/</span><span class="dim">&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;1.0&lt;/priority&gt;
+  &lt;/url&gt;
+&lt;/urlset&gt;</span></pre>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════
+       BAJO
+  ════════════════════════════════════ -->
+  <div class="divider"></div>
+  <section class="group" id="g-bajo">
+    <div class="group-header">
+      <div class="group-icon bajo">🔧</div>
+      <div>
+        <div class="group-title">Mantenibilidad</div>
+        <div class="group-sub">No afectan al usuario. Deuda técnica para la próxima refactorización.</div>
+      </div>
+      <span class="group-badge bajo">Bajo · 3</span>
+    </div>
+
+    <div class="findings">
+
+      <article class="finding bajo" id="f08">
+        <div class="finding-head">
+          <span class="finding-num">08</span>
+          <div class="finding-title-block">
+            <div class="finding-title">Numeración de secciones CSS con salto y desorden</div>
+            <div class="finding-scope">css/styles.css · estructura interna</div>
+          </div>
+          <div class="finding-chips">
+            <span class="chip impacto-bajo">Mantenibilidad</span>
+            <span class="chip esfuerzo-trivial">Trivial</span>
+          </div>
+        </div>
+        <div class="finding-body">
+          <p class="finding-desc">
+            Las secciones van de la 1 a la 9, luego saltan a la 11 (sección 10 nunca existió). Las secciones 16–20 aparecen fuera de orden cronológico. No afecta el funcionamiento pero sí la legibilidad del archivo para cualquier persona que lo retome.
+          </p>
+          <div class="finding-detail">
+            <span class="detail-label">Orden real en el archivo</span>
+            <pre><span class="dim">1·2·3·4·5·6·7·8·9</span> → <span class="bad">11·12·13·14·15·19·16·17·18·20</span></pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="finding bajo" id="f09">
+        <div class="finding-head">
+          <span class="finding-num">09</span>
+          <div class="finding-title-block">
+            <div class="finding-title">Tokens --c-od-* duplican la escala --c-ink-*</div>
+            <div class="finding-scope">css/styles.css · :root · 9 tokens redundantes</div>
+          </div>
+          <div class="finding-chips">
+            <span class="chip impacto-bajo">Tokens</span>
+            <span class="chip esfuerzo-bajo">Esfuerzo bajo</span>
+          </div>
+        </div>
+        <div class="finding-body">
+          <p class="finding-desc">
+            El <code>:root</code> mantiene dos familias paralelas: <code>--c-ink-*</code> (sistema activo) y <code>--c-od-*</code> (herencia). Los tokens <code>--c-od-*</code> solo se usan en footer y modal — ambos pueden reescribirse con los equivalentes <code>--c-ink-*</code>.
+          </p>
+          <div class="finding-detail">
+            <span class="detail-label">Tokens redundantes</span>
+            <pre><span class="bad">--c-od-text</span>   → <span class="good">--c-ink</span>        (0.85 ≈ 0.90)
+<span class="bad">--c-od-body</span>   → <span class="good">--c-ink-soft</span>   (0.45 ≈ 0.60)
+<span class="bad">--c-od-muted</span>  → <span class="good">--c-ink-muted</span>  (0.30 ≈ 0.38)
+<span class="bad">--c-od-dim</span>    → <span class="good">--c-ink-faint</span>  (0.25 ≈ 0.22)
+<span class="dim">... + 5 tokens más (faint, border, line, bg, bg-mid)</span></pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="finding bajo" id="f10">
+        <div class="finding-head">
+          <span class="finding-num">10</span>
+          <div class="finding-title-block">
+            <div class="finding-title">Meta description 8 caracteres bajo el mínimo recomendado</div>
+            <div class="finding-scope">index.html · &lt;head&gt; · meta name="description"</div>
+          </div>
+          <div class="finding-chips">
+            <span class="chip impacto-bajo">SEO menor</span>
+            <span class="chip esfuerzo-trivial">Trivial</span>
+          </div>
+        </div>
+        <div class="finding-body">
+          <p class="finding-desc">
+            La meta description actual tiene <strong>142 caracteres</strong>. El rango recomendado es 150–160 para maximizar el snippet en resultados de búsqueda. Son 8 caracteres de diferencia.
+          </p>
+          <div class="finding-detail">
+            <span class="detail-label">Actual (142 chars)</span>
+            <pre><span class="dim">"Olivacraft es una consultora tecnológica boutique. Diseño, desarrollo
+web y automatización IA estructurados bajo OLIVA, nuestro framework IA."</span></pre>
+          </div>
+          <div class="finding-detail">
+            <span class="detail-label">Sugerido (~155 chars)</span>
+            <p class="detail-text fix">"Olivacraft es una consultora tecnológica boutique. Diseño, desarrollo web y automatización IA — estructurados bajo OLIVA, nuestro framework propietario. Entregamos más rápido con el mismo rigor."</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════
+       OK / CONSERVAR
+  ════════════════════════════════════ -->
+  <div class="divider"></div>
+  <section class="group" id="g-ok">
+    <div class="group-header">
+      <div class="group-icon ok">✅</div>
+      <div>
+        <div class="group-title">Puntos fuertes a conservar</div>
+        <div class="group-sub">Decisiones correctas que no deben tocarse sin razón.</div>
+      </div>
+      <span class="group-badge ok">OK · 7</span>
+    </div>
+
+    <div class="ok-grid">
+      <div class="ok-item">
+        <span class="ok-check">✓</span>
+        <div class="ok-text">
+          <strong>Formulario con checkboxes múltiples</strong>
+          Mejor que un dropdown — los clientes suelen necesitar más de un servicio. Reduce fricción y da contexto pre-calificado.
+        </div>
+      </div>
+      <div class="ok-item">
+        <span class="ok-check">✓</span>
+        <div class="ok-text">
+          <strong>FAQ con accordion CSS</strong>
+          El patrón grid-template-rows es moderno, sin JS extra. Reduce sobrecarga visual sin ocultar información relevante.
+        </div>
+      </div>
+      <div class="ok-item">
+        <span class="ok-check">✓</span>
+        <div class="ok-text">
+          <strong>Focus visible + prefers-reduced-motion</strong>
+          Ambos implementados correctamente. Diferencia mouse de teclado. Respeta accesibilidad vestibular.
+        </div>
+      </div>
+      <div class="ok-item">
+        <span class="ok-check">✓</span>
+        <div class="ok-text">
+          <strong>aria-hidden en SVGs ilustrativos</strong>
+          Todos los SVGs decorativos tienen <code>aria-hidden="true"</code>. Labels visibles en inputs. fieldset + legend en checkboxes.
+        </div>
+      </div>
+      <div class="ok-item">
+        <span class="ok-check">✓</span>
+        <div class="ok-text">
+          <strong>WhatsApp flotante sin glow verde</strong>
+          La sombra neutra evita el patrón visual IA-genérico. CTA de conversión directa sin agresividad visual.
+        </div>
+      </div>
+      <div class="ok-item">
+        <span class="ok-check">✓</span>
+        <div class="ok-text">
+          <strong>Framework section: sticky + steps</strong>
+          Layout dos columnas con OLIVA card sticky funciona narrativamente. Muestra el sistema, no solo lo describe.
+        </div>
+      </div>
+      <div class="ok-item">
+        <span class="ok-check">✓</span>
+        <div class="ok-text">
+          <strong>Nav breakpoint en 1024px</strong>
+          Decisión correcta — 4 ítems + logo + CTA no caben en 768px. El hamburger en tablet evita overflow.
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════
+       TABLA RESUMEN
+  ════════════════════════════════════ -->
+  <div class="divider"></div>
+  <section class="group" id="g-tabla">
+    <div class="group-header">
+      <div class="group-icon medio">📊</div>
+      <div>
+        <div class="group-title">Resumen priorizado</div>
+        <div class="group-sub">10 hallazgos ordenados por severidad. Los 3 primeros son los de mayor impacto pendiente.</div>
+      </div>
+    </div>
+
+    <div class="summary-table-wrap">
+      <div class="summary-table-head">
+        <span>10 hallazgos activos · olivacraft.com · 09 Jun 2026</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Problema</th>
+            <th>Severidad</th>
+            <th>Esfuerzo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td><strong>Textos &lt;14px sistemáticos</strong> — 10+ componentes bajo el mínimo WCAG</td>
+            <td><span class="td-sev alto">Alto</span></td>
+            <td><span class="td-ef bajo">Bajo</span></td>
+          </tr>
+          <tr>
+            <td>02</td>
+            <td><strong>Automatización IA sin showcase</strong> — servicio invisible en Capacidades</td>
+            <td><span class="td-sev alto">Alto</span></td>
+            <td><span class="td-ef medio">Medio</span></td>
+          </tr>
+          <tr>
+            <td>03</td>
+            <td><strong>FAQ fuera del footer nav</strong> — inconsistencia de navegación</td>
+            <td><span class="td-sev alto">Alto</span></td>
+            <td><span class="td-ef trivial">Trivial</span></td>
+          </tr>
+          <tr>
+            <td>04</td>
+            <td><strong>Eyebrow y tagline redundantes</strong> — OLIVA repetido en 3 líneas</td>
+            <td><span class="td-sev medio">Medio</span></td>
+            <td><span class="td-ef bajo">Bajo</span></td>
+          </tr>
+          <tr>
+            <td>05</td>
+            <td><strong>H1 hero limitado a 3rem</strong> — desaprovecha pantallas grandes</td>
+            <td><span class="td-sev medio">Medio</span></td>
+            <td><span class="td-ef trivial">Trivial</span></td>
+          </tr>
+          <tr>
+            <td>06</td>
+            <td><strong>Anelisse sin apellido</strong> — asimetría frente a Francisco Orellana</td>
+            <td><span class="td-sev medio">Medio</span></td>
+            <td><span class="td-ef trivial">Trivial</span></td>
+          </tr>
+          <tr>
+            <td>07</td>
+            <td><strong>Sin sitemap.xml ni robots.txt</strong> — SEO técnico incompleto</td>
+            <td><span class="td-sev medio">Medio</span></td>
+            <td><span class="td-ef bajo">Bajo</span></td>
+          </tr>
+          <tr>
+            <td>08</td>
+            <td><strong>Numeración CSS con salto</strong> — sección 10 faltante, orden roto</td>
+            <td><span class="td-sev bajo">Bajo</span></td>
+            <td><span class="td-ef trivial">Trivial</span></td>
+          </tr>
+          <tr>
+            <td>09</td>
+            <td><strong>Tokens --c-od-* redundantes</strong> — 9 tokens duplican --c-ink-*</td>
+            <td><span class="td-sev bajo">Bajo</span></td>
+            <td><span class="td-ef bajo">Bajo</span></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><strong>Meta description 8 chars corta</strong> — snippet de búsqueda subóptimo</td>
+            <td><span class="td-sev bajo">Bajo</span></td>
+            <td><span class="td-ef trivial">Trivial</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="doc-footer">
+  <p>Auditoría live · <strong>olivacraft.com</strong> · 09 de junio de 2026 · Basada en código fuente, brand-system.md y CLAUDE.md</p>
+</footer>
+
+</body>
+</html>
