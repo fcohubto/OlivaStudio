@@ -14,19 +14,18 @@
 - **404.html** — página de error creada con SVG y estilos propios (commit 80f2fb5)
 - **auditoria-2026-06-09.html** — informe de auditoría SEO/UX commiteado (commit 5b3fa08)
 - **Footer Navegación** — FAQ agregado a `index.html` y `404.html`, orden alineado con navlinks: Capacidades → El Framework → Estructura → FAQ → Contacto (commits 7fea7bb, f9f9073)
+- **Google Analytics GA4** `G-ZC1K670HJK` — snippet integrado en `index.html` local para sincronizar con live (commit 11c6033)
+- **Formulario contacto** — opción "Automatización IA" eliminada, quedan 7 opciones (commit 11c6033)
 
 ### Pendiente
 
-- **Microsoft Clarity** — integración pendiente
 - **Configurar 404 en servidor** — apuntar 404.html en hosting
 - **Fotos reales** Francisco y Anelisse → reemplazar badges iniciales F/A
-- **Backend formulario** — no envía (sin backend/servicio activo)
 - **caso-fletes.html** — actualizar al dark theme (sin link desde index por ahora)
-- **Deploy** a olivacraft.com (confirmar DNS antes de push)
 
 ### Siguiente Paso Exacto
 
-Configurar Microsoft Clarity (snippet en `<head>` de `index.html` y `404.html`) + configurar ruta 404 en servidor.
+Configurar ruta 404 en servidor/hosting (`ErrorDocument 404 /404.html` en Apache, o `not_found_page` en Netlify/Vercel).
 
 ---
 
