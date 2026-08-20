@@ -41,6 +41,55 @@ if (toggle && mobileNav) {
 }
 
 
+/* ── Nav — sección activa al hacer scroll (scrollspy) ── */
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+if (navLinks.length) {
+  const sections = [...navLinks]
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  const setActiveLink = id => {
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+    });
+  };
+
+  const spyObserver = new IntersectionObserver(
+    entries => {
+      const visible = entries.find(entry => entry.isIntersecting);
+      if (visible) setActiveLink(visible.target.id);
+    },
+    { rootMargin: '-64px 0px -60% 0px' }
+  );
+
+  sections.forEach(section => spyObserver.observe(section));
+}
+
+
+/* ── El Framework — nodo del diagrama sincronizado con la fase en lectura ── */
+const frameworkSteps = document.querySelectorAll('.framework-step[data-node]');
+const frameworkNodes = document.querySelectorAll('.framework-oliva-card .framework-node');
+
+if (frameworkSteps.length && frameworkNodes.length) {
+  const setActiveNode = node => {
+    frameworkNodes.forEach(el => {
+      el.classList.toggle('framework-node--active', el.dataset.node === node);
+    });
+  };
+
+  const frameworkObserver = new IntersectionObserver(
+    entries => {
+      const visible = entries.find(entry => entry.isIntersecting);
+      if (visible) setActiveNode(visible.target.dataset.node);
+    },
+    { rootMargin: '-30% 0px -50% 0px' }
+  );
+
+  frameworkSteps.forEach(step => frameworkObserver.observe(step));
+}
+
+
 /* ── Modal legal ── */
 const modalOverlay = document.getElementById('modal-legal');
 
@@ -214,4 +263,147 @@ if (contactForm) {
         if (window.turnstile) window.turnstile.reset();
       });
   });
+}
+
+
+/* ── Demo interactivo GATO (self-contained — no depende del proyecto real, valores portados una sola vez) ── */
+const gatoEmbed = document.querySelector('.gato-embed');
+
+if (gatoEmbed) {
+  // Botón "Encargar por WhatsApp" decorativo a propósito: es una demo ilustrativa
+  // de UI/UX, no un canal de venta real. Queda inactivo por CSS (pointer-events:none)
+  // + fuera del tab order (tabindex="-1") — no requiere lógica de click.
+
+  const GATO_SIZES = {
+    small:  { name: 'Árbol Pequeño', platforms: 1, heightCm: 60,  price: 99000  },
+    medium: { name: 'Árbol Mediano', platforms: 2, heightCm: 80,  price: 149000 },
+    large:  { name: 'Árbol Grande',  platforms: 3, heightCm: 100, price: 199000 }
+  };
+
+  const GATO_EXTRAS = {
+    house:   { price: 45000, label: 'Casa' },
+    ramp:    { price: 25000, label: 'Rampa' },
+    bigbase: { price: 15000, label: 'Base grande' }
+  };
+
+  const gatoState = { size: 'medium', house: false, ramp: false, bigbase: false };
+
+  const gatoFmt = n => '$' + n.toLocaleString('es-CL');
+
+  function gatoTotal() {
+    let p = GATO_SIZES[gatoState.size].price;
+    Object.keys(GATO_EXTRAS).forEach(k => { if (gatoState[k]) p += GATO_EXTRAS[k].price; });
+    return p;
+  }
+
+  function gatoDrawTree() {
+    const svg = document.getElementById('gato-tree-svg');
+    if (!svg) return;
+
+    const W = 220, H = 320;
+    const { platforms, heightCm } = GATO_SIZES[gatoState.size];
+    const baseY = H - 20;
+    const baseW = gatoState.bigbase ? 190 : 158;
+    const baseX = (W - baseW) / 2;
+    const postW = 22, postX = (W - postW) / 2;
+    const postH = { 60: 186, 80: 244, 100: 294 }[heightCm];
+    const postTop = baseY - postH;
+    const fracs = { 1: [0.72], 2: [0.46, 0.78], 3: [0.34, 0.58, 0.80] }[platforms];
+    const pWidths = [138, 110, 84];
+
+    let h = '';
+    h += `<ellipse cx="${W / 2}" cy="${H - 12}" rx="${baseW / 2 - 8}" ry="5" fill="rgba(28, 61, 45, 0.05)"/>`;
+    h += `<rect x="${baseX}" y="${baseY}" width="${baseW}" height="18" rx="4" fill="#d4a96a" stroke="#1C3D2D" stroke-width="1.5"/>`;
+    h += `<rect x="${postX}" y="${postTop}" width="${postW}" height="${postH}" fill="#b87d48" rx="2" stroke="#1C3D2D" stroke-width="0.5"/>`;
+    h += `<rect x="${postX}" y="${postTop}" width="6" height="${postH}" rx="1" fill="rgba(255,255,255,0.18)"/>`;
+
+    for (let i = 1; i <= 3; i++) {
+      const lx = postX + (postW / 4) * i;
+      h += `<line x1="${lx}" y1="${postTop + 4}" x2="${lx}" y2="${baseY - 2}" stroke="#7a4e22" stroke-width="1.2" stroke-dasharray="3,5" opacity="0.6"/>`;
+    }
+
+    if (gatoState.ramp && platforms >= 2) {
+      const y1 = baseY - fracs[0] * postH - 12;
+      const y2 = baseY - fracs[1] * postH;
+      const rx1 = postX + postW + 2, ry1 = y1 + 5;
+      const rx2 = postX + postW + 48, ry2 = y2 + 12;
+      const len = Math.sqrt(Math.pow(rx2 - rx1, 2) + Math.pow(ry2 - ry1, 2));
+      const ang = Math.atan2(ry2 - ry1, rx2 - rx1) * 180 / Math.PI + 90;
+      h += `<rect x="${rx1 - 5}" y="${ry1}" width="10" height="${len}" rx="3" fill="#d4a96a" stroke="#1C3D2D" stroke-width="1.2" transform="rotate(${ang},${rx1},${ry1})" opacity="0.9"/>`;
+    }
+
+    fracs.forEach((frac, i) => {
+      const pw = pWidths[i] || 80;
+      const py = baseY - frac * postH - 12;
+      const px = (W - pw) / 2;
+      h += `<rect x="${px}" y="${py}" width="${pw}" height="12" rx="3" fill="#1C3D2D" stroke="#132A1F" stroke-width="1"/>`;
+      h += `<rect x="${px + 4}" y="${py + 2}" width="${pw - 12}" height="2" rx="1" fill="rgba(255,255,255,0.2)"/>`;
+    });
+
+    if (gatoState.house) {
+      const topFrac = fracs[fracs.length - 1];
+      const topY = baseY - topFrac * postH - 12;
+      const hW = 62, bodyH = 30, roofH = 22;
+      const hX = (W - hW) / 2, roofTop = topY - bodyH - roofH;
+      h += `<rect x="${hX}" y="${roofTop + roofH}" width="${hW}" height="${bodyH + 2}" fill="#d4a96a" stroke="#1C3D2D" stroke-width="1.5" rx="2"/>`;
+      h += `<polygon points="${hX - 6},${roofTop + roofH} ${hX + hW + 6},${roofTop + roofH} ${W / 2},${roofTop}" fill="#1C3D2D" stroke="#132A1F" stroke-width="1.5"/>`;
+      const dR = 10;
+      h += `<path d="M${W / 2 - dR},${roofTop + roofH + bodyH} a${dR},${dR} 0 0,1 ${dR * 2},0" fill="#FAF9F6" stroke="#1C3D2D" stroke-width="1.5"/>`;
+    }
+
+    svg.innerHTML = h;
+  }
+
+  function gatoRender() {
+    const s = GATO_SIZES[gatoState.size];
+
+    document.getElementById('gato-preview-name').textContent = s.name;
+
+    document.querySelectorAll('.gato-size-card').forEach(card => {
+      card.classList.toggle('gato-size-card--active', card.dataset.size === gatoState.size);
+    });
+    document.querySelectorAll('.gato-extra-card').forEach(card => {
+      card.classList.toggle('gato-extra-card--active', !!gatoState[card.dataset.extra]);
+    });
+
+    const tags = [`${s.platforms} plataforma${s.platforms > 1 ? 's' : ''}`, `${s.heightCm} cm`];
+    if (gatoState.bigbase) tags.push('Base grande');
+    if (gatoState.house)   tags.push('Casa');
+    if (gatoState.ramp)    tags.push('Rampa');
+    document.getElementById('gato-preview-tags').innerHTML =
+      tags.map(t => `<span class="gato-preview__tag">${t}</span>`).join('');
+
+    document.getElementById('gato-base-price').textContent = gatoFmt(s.price);
+
+    let addonPrice = 0;
+    Object.keys(GATO_EXTRAS).forEach(k => { if (gatoState[k]) addonPrice += GATO_EXTRAS[k].price; });
+    const addonsRow = document.getElementById('gato-addons-row');
+    if (addonPrice > 0) {
+      addonsRow.style.display = 'flex';
+      document.getElementById('gato-addons-price').textContent = `+${gatoFmt(addonPrice)}`;
+    } else {
+      addonsRow.style.display = 'none';
+    }
+
+    document.getElementById('gato-total-price').textContent = gatoFmt(gatoTotal());
+
+    gatoDrawTree();
+  }
+
+  document.querySelectorAll('.gato-size-card').forEach(card => {
+    card.addEventListener('click', () => {
+      gatoState.size = card.dataset.size;
+      gatoRender();
+    });
+  });
+
+  document.querySelectorAll('.gato-extra-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const key = card.dataset.extra;
+      gatoState[key] = !gatoState[key];
+      gatoRender();
+    });
+  });
+
+  gatoRender();
 }
