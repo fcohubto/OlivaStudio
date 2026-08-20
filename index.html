@@ -67,7 +67,7 @@
     <section id="hero">
       <div class="hero-inner container">
         <div class="hero-text">
-          <span class="section-eyebrow">Consultora Tecnológica para Pymes</span>
+          <span class="section-eyebrow">Consultora Tecnológica</span>
           <h1>Recupera las horas que hoy pierdes en tareas manuales</h1>
           <p class="hero-tagline">Acelerados por OLIVA®, nuestro framework IA</p>
           <p class="hero-body">Sitios, paneles de gestión y automatización hechos a la medida de cómo trabajas hoy — no de una plantilla.</p>
@@ -153,7 +153,7 @@
     </section>
 
     <!-- SERVICIOS -->
-    <section id="servicios">
+    <section id="servicios" tabindex="-1">
       <div class="servicios-header container" data-reveal>
         <span class="section-label">Capacidades</span>
         <h2>Lo que construimos</h2>
@@ -166,8 +166,8 @@
           <h3>Interfaces que se entienden solas</h3>
           <p>Pantallas diseñadas para que las use cualquier usuario y cliente sin fricciones ni pasos innecesarios, alineadas a lo que tu negocio necesita lograr. Te acompañamos desde el primer boceto hasta la versión final.</p>
           <div class="servicio-tags">
-            <span class="servicio-tag">Figma</span>
-            <span class="servicio-tag">Design System</span>
+            <span class="servicio-tag">Bocetos</span>
+            <span class="servicio-tag">Sistemas de diseño</span>
             <span class="servicio-tag">Prototipado</span>
           </div>
         </div>
@@ -193,8 +193,8 @@
                 <div class="gato-options">
                   <div>
                     <p class="gato-step-header"><span class="gato-step-num">1</span>Elige el tamaño base</p>
-                    <div class="gato-size-list">
-                      <div class="gato-size-card" data-size="small">
+                    <div class="gato-size-list" role="radiogroup" aria-label="Tamaño base">
+                      <div class="gato-size-card" data-size="small" role="radio" aria-checked="false" tabindex="-1">
                         <span class="gato-radio"></span>
                         <svg class="gato-tree-icn" width="14" height="24" viewBox="0 0 20 36" fill="none"><rect x="6" y="0" width="8" height="28" rx="1.5" fill="#B87D48"/><rect x="0" y="28" width="20" height="8" rx="2" fill="#1C3D2D"/><rect x="1.5" y="14" width="17" height="6" rx="1.5" fill="#1C3D2D"/></svg>
                         <div class="gato-size-card__info">
@@ -203,7 +203,7 @@
                         </div>
                         <span class="gato-size-card__price">$99.000</span>
                       </div>
-                      <div class="gato-size-card gato-size-card--active" data-size="medium">
+                      <div class="gato-size-card gato-size-card--active" data-size="medium" role="radio" aria-checked="true" tabindex="0">
                         <span class="gato-size-card__badge">Recomendado</span>
                         <span class="gato-radio"></span>
                         <svg class="gato-tree-icn" width="14" height="30" viewBox="0 0 20 48" fill="none"><rect x="6" y="0" width="8" height="38" rx="1.5" fill="#B87D48"/><rect x="0" y="38" width="20" height="10" rx="2" fill="#1C3D2D"/><rect x="1.5" y="12" width="17" height="6" rx="1.5" fill="#1C3D2D"/><rect x="0.5" y="26" width="19" height="6" rx="1.5" fill="#1C3D2D"/></svg>
@@ -213,7 +213,7 @@
                         </div>
                         <span class="gato-size-card__price">$149.000</span>
                       </div>
-                      <div class="gato-size-card" data-size="large">
+                      <div class="gato-size-card" data-size="large" role="radio" aria-checked="false" tabindex="-1">
                         <span class="gato-radio"></span>
                         <svg class="gato-tree-icn" width="14" height="36" viewBox="0 0 20 60" fill="none"><rect x="6" y="0" width="8" height="50" rx="1.5" fill="#B87D48"/><rect x="0" y="50" width="20" height="10" rx="2" fill="#1C3D2D"/><rect x="2.5" y="9" width="15" height="5" rx="1.5" fill="#1C3D2D"/><rect x="1" y="23" width="18" height="5" rx="1.5" fill="#1C3D2D"/><rect x="1.5" y="37" width="17" height="5" rx="1.5" fill="#1C3D2D"/></svg>
                         <div class="gato-size-card__info">
@@ -226,16 +226,16 @@
                   </div>
                   <div>
                     <p class="gato-step-header"><span class="gato-step-num">2</span>Agrega accesorios modulares</p>
-                    <div class="gato-extras-list">
-                      <div class="gato-extra-card" data-extra="house">
+                    <div class="gato-extras-list" role="group" aria-label="Accesorios modulares">
+                      <div class="gato-extra-card" data-extra="house" role="checkbox" aria-checked="false" tabindex="0">
                         <div class="gato-extra-card__left"><span class="gato-checkbox"></span><span class="gato-extra-card__name">Casa / Cueva refugio superior</span></div>
                         <span class="gato-extra-card__price">+$45.000</span>
                       </div>
-                      <div class="gato-extra-card" data-extra="ramp">
+                      <div class="gato-extra-card" data-extra="ramp" role="checkbox" aria-checked="false" tabindex="0">
                         <div class="gato-extra-card__left"><span class="gato-checkbox"></span><span class="gato-extra-card__name">Rampa inclinada con sisal</span></div>
                         <span class="gato-extra-card__price">+$25.000</span>
                       </div>
-                      <div class="gato-extra-card" data-extra="bigbase">
+                      <div class="gato-extra-card" data-extra="bigbase" role="checkbox" aria-checked="false" tabindex="0">
                         <div class="gato-extra-card__left"><span class="gato-checkbox"></span><span class="gato-extra-card__name">Base reforzada extra grande</span></div>
                         <span class="gato-extra-card__price">+$15.000</span>
                       </div>
@@ -526,7 +526,7 @@
 
 
     <!-- EL FRAMEWORK -->
-    <section id="framework">
+    <section id="framework" tabindex="-1">
       <div class="section-inner container">
         <div class="framework-layout">
 
@@ -560,7 +560,7 @@
                   <h3>Diseño hecho para durar</h3>
                   <p>Convertimos ese plan en pantallas reales — consistentes, fáciles de usar y pensadas para lograr resultados, no solo para verse bien. Cada pieza queda ordenada y lista para reutilizarse cuando tu negocio crezca.</p>
                   <div class="servicio-tags">
-                    <span class="servicio-tag">Figma</span>
+                    <span class="servicio-tag">Prototipos</span>
                     <span class="servicio-tag">Diseño consistente</span>
                     <span class="servicio-tag">Reutilizable</span>
                   </div>
@@ -612,13 +612,13 @@
     </section>
 
     <!-- ESTRUCTURA -->
-    <section id="estructura">
+    <section id="estructura" tabindex="-1">
       <div class="section-inner container">
         <span class="section-label">Estructura</span>
 
         <div class="estudio-intro" data-reveal>
           <h2>Detrás del framework</h2>
-          <p>Estrategia comercial, marketing, diseño de producto e ingeniería. Cuatro personas, un mismo framework — sin intermediarios entre el diagnóstico y la entrega.</p>
+          <p>Estrategia comercial, marketing y diseño de producto. Un equipo, un mismo framework — sin intermediarios entre el diagnóstico y la entrega.</p>
         </div>
 
         <span class="equipo-titulo">Equipo</span>
@@ -655,7 +655,7 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq">
+    <section id="faq" tabindex="-1">
       <div class="section-inner container">
         <div class="section-header" data-reveal>
           <span class="section-label">FAQ</span>
@@ -753,7 +753,7 @@
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto">
+    <section id="contacto" tabindex="-1">
       <div class="section-inner container">
         <div class="section-header" data-reveal>
           <span class="section-label">Contacto</span>
@@ -764,12 +764,12 @@
         <form class="contact-form" id="contacto-form" novalidate>
             <div class="form-row">
               <div class="form-group">
-                <label for="nombre">Nombre y empresa</label>
+                <label for="nombre">Nombre o Empresa</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Tu nombre o empresa" autocomplete="name" required>
               </div>
               <div class="form-group">
                 <label for="email">Correo electrónico</label>
-                <input type="email" id="email" name="email" placeholder="tu@empresa.com" autocomplete="email" required>
+                <input type="email" id="email" name="email" placeholder="tu@correo.com" autocomplete="email" required>
               </div>
             </div>
             <fieldset class="form-checkboxes">
@@ -808,7 +808,7 @@
             </div>
             <div class="contact-info-item">
               <span class="contact-info-label">Modalidad</span>
-              <span>Llamada por Google Meet</span>
+              <span>Presencial u Online, según caso</span>
             </div>
           </aside>
 

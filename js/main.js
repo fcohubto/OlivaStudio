@@ -433,10 +433,15 @@ if (gatoEmbed) {
     document.getElementById('gato-preview-name').textContent = s.name;
 
     document.querySelectorAll('.gato-size-card').forEach(card => {
-      card.classList.toggle('gato-size-card--active', card.dataset.size === gatoState.size);
+      const isActive = card.dataset.size === gatoState.size;
+      card.classList.toggle('gato-size-card--active', isActive);
+      card.setAttribute('aria-checked', String(isActive));
+      card.tabIndex = isActive ? 0 : -1;
     });
     document.querySelectorAll('.gato-extra-card').forEach(card => {
-      card.classList.toggle('gato-extra-card--active', !!gatoState[card.dataset.extra]);
+      const isActive = !!gatoState[card.dataset.extra];
+      card.classList.toggle('gato-extra-card--active', isActive);
+      card.setAttribute('aria-checked', String(isActive));
     });
 
     const tags = [`${s.platforms} plataforma${s.platforms > 1 ? 's' : ''}`, `${s.heightCm} cm`];
@@ -463,18 +468,42 @@ if (gatoEmbed) {
     gatoDrawTree();
   }
 
-  document.querySelectorAll('.gato-size-card').forEach(card => {
-    card.addEventListener('click', () => {
-      gatoState.size = card.dataset.size;
-      gatoRender();
+  const gatoSizeCards = [...document.querySelectorAll('.gato-size-card')];
+
+  const selectGatoSize = card => {
+    gatoState.size = card.dataset.size;
+    gatoRender();
+    card.focus();
+  };
+
+  gatoSizeCards.forEach((card, i) => {
+    card.addEventListener('click', () => selectGatoSize(card));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectGatoSize(card);
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectGatoSize(gatoSizeCards[(i + 1) % gatoSizeCards.length]);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectGatoSize(gatoSizeCards[(i - 1 + gatoSizeCards.length) % gatoSizeCards.length]);
+      }
     });
   });
 
   document.querySelectorAll('.gato-extra-card').forEach(card => {
-    card.addEventListener('click', () => {
+    const toggleGatoExtra = () => {
       const key = card.dataset.extra;
       gatoState[key] = !gatoState[key];
       gatoRender();
+    };
+    card.addEventListener('click', toggleGatoExtra);
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleGatoExtra();
+      }
     });
   });
 

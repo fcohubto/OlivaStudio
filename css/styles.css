@@ -239,6 +239,7 @@ p {
   padding: 0 var(--container-px);
 }
 section { padding: var(--section-py) var(--container-px); }
+section[tabindex="-1"]:focus { outline: none; } /* landing point de foco al navegar por el nav, no un control visual */
 .section-inner { max-width: var(--max-w); margin: 0 auto; }
 .section-header { margin-bottom: var(--sp-12); }
 
@@ -746,7 +747,7 @@ section { padding: var(--section-py) var(--container-px); }
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-wider);
   text-transform: uppercase;
-  color: var(--c-ink-faint);
+  color: var(--c-cyan);
   margin-bottom: var(--sp-4);
 }
 
@@ -1388,6 +1389,8 @@ section { padding: var(--section-py) var(--container-px); }
 }
 .gato-size-card,
 .gato-extra-card { cursor: pointer; }
+.gato-size-card:focus-visible,
+.gato-extra-card:focus-visible { outline: 1.5px solid var(--g-brand); outline-offset: 2px; }
 .gato-extra-card--active { background: var(--g-brand-light); border-color: var(--g-brand); }
 .gato-checkbox { position: relative; }
 .gato-extra-card--active .gato-checkbox {
@@ -1740,7 +1743,7 @@ section { padding: var(--section-py) var(--container-px); }
   padding: clamp(var(--sp-14), 8vw, var(--sp-24)) var(--container-px);
   max-width: var(--max-w);
   margin: 0 auto;
-  border-top: 1px solid var(--c-border);
+  
 }
 @media (min-width: 900px) {
   .narrative-block {
