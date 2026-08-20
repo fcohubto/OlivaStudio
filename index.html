@@ -43,6 +43,7 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
+      <span class="nav-indicator" aria-hidden="true"></span>
       <a href="#contacto" class="btn btn-primary nav-cta">Conversemos</a>
       <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -153,13 +154,13 @@
 
     <!-- SERVICIOS -->
     <section id="servicios">
-      <div class="servicios-header container">
+      <div class="servicios-header container" data-reveal>
         <span class="section-label">Capacidades</span>
         <h2>Lo que construimos</h2>
       </div>
 
       <!-- UI/UX — apilado: texto arriba, mockup real ancho abajo -->
-      <div class="narrative-block narrative-block--wide">
+      <div class="narrative-block narrative-block--wide" data-reveal>
         <div class="narrative-text">
           <span class="narrative-label">UI / UX Design</span>
           <h3>Interfaces que se entienden solas</h3>
@@ -195,7 +196,7 @@
                     <div class="gato-size-list">
                       <div class="gato-size-card" data-size="small">
                         <span class="gato-radio"></span>
-                        <svg class="gato-tree-icn" width="14" height="24" viewBox="0 0 20 36" fill="none"><rect x="6" y="0" width="8" height="28" rx="1.5" fill="#B87D48"/><rect x="0" y="28" width="20" height="8" rx="2" fill="#1C3D2D"/><rect x="3" y="14" width="17" height="6" rx="1.5" fill="#1C3D2D"/></svg>
+                        <svg class="gato-tree-icn" width="14" height="24" viewBox="0 0 20 36" fill="none"><rect x="6" y="0" width="8" height="28" rx="1.5" fill="#B87D48"/><rect x="0" y="28" width="20" height="8" rx="2" fill="#1C3D2D"/><rect x="1.5" y="14" width="17" height="6" rx="1.5" fill="#1C3D2D"/></svg>
                         <div class="gato-size-card__info">
                           <div class="gato-size-card__name">Pequeño</div>
                           <div class="gato-size-card__desc">1 plataforma de salto · 60 cm de alto</div>
@@ -205,7 +206,7 @@
                       <div class="gato-size-card gato-size-card--active" data-size="medium">
                         <span class="gato-size-card__badge">Recomendado</span>
                         <span class="gato-radio"></span>
-                        <svg class="gato-tree-icn" width="14" height="30" viewBox="0 0 20 48" fill="none"><rect x="6" y="0" width="8" height="38" rx="1.5" fill="#B87D48"/><rect x="0" y="38" width="20" height="10" rx="2" fill="#1C3D2D"/><rect x="3" y="12" width="17" height="6" rx="1.5" fill="#1C3D2D"/><rect x="1" y="26" width="19" height="6" rx="1.5" fill="#1C3D2D"/></svg>
+                        <svg class="gato-tree-icn" width="14" height="30" viewBox="0 0 20 48" fill="none"><rect x="6" y="0" width="8" height="38" rx="1.5" fill="#B87D48"/><rect x="0" y="38" width="20" height="10" rx="2" fill="#1C3D2D"/><rect x="1.5" y="12" width="17" height="6" rx="1.5" fill="#1C3D2D"/><rect x="0.5" y="26" width="19" height="6" rx="1.5" fill="#1C3D2D"/></svg>
                         <div class="gato-size-card__info">
                           <div class="gato-size-card__name">Mediano</div>
                           <div class="gato-size-card__desc">2 plataformas de salto · 80 cm de alto</div>
@@ -214,7 +215,7 @@
                       </div>
                       <div class="gato-size-card" data-size="large">
                         <span class="gato-radio"></span>
-                        <svg class="gato-tree-icn" width="14" height="36" viewBox="0 0 20 60" fill="none"><rect x="6" y="0" width="8" height="50" rx="1.5" fill="#B87D48"/><rect x="0" y="50" width="20" height="10" rx="2" fill="#1C3D2D"/><rect x="5" y="9" width="15" height="5" rx="1.5" fill="#1C3D2D"/><rect x="2" y="23" width="18" height="5" rx="1.5" fill="#1C3D2D"/><rect x="3" y="37" width="17" height="5" rx="1.5" fill="#1C3D2D"/></svg>
+                        <svg class="gato-tree-icn" width="14" height="36" viewBox="0 0 20 60" fill="none"><rect x="6" y="0" width="8" height="50" rx="1.5" fill="#B87D48"/><rect x="0" y="50" width="20" height="10" rx="2" fill="#1C3D2D"/><rect x="2.5" y="9" width="15" height="5" rx="1.5" fill="#1C3D2D"/><rect x="1" y="23" width="18" height="5" rx="1.5" fill="#1C3D2D"/><rect x="1.5" y="37" width="17" height="5" rx="1.5" fill="#1C3D2D"/></svg>
                         <div class="gato-size-card__info">
                           <div class="gato-size-card__name">Grande</div>
                           <div class="gato-size-card__desc">3 plataformas de salto · 100 cm de alto</div>
@@ -269,7 +270,6 @@
                   <div class="gato-breakdown">
                     <div class="gato-row"><span>Estructura base del árbol</span><span id="gato-base-price">$149.000</span></div>
                     <div class="gato-row" id="gato-addons-row" style="display:none;"><span>Accesorios adicionales</span><span id="gato-addons-price">+$0</span></div>
-                    <div class="gato-row"><span>Despacho a regiones</span><span>Por pagar (Starken)</span></div>
                     <div class="gato-row gato-row--total"><span>Total Estimado</span><b id="gato-total-price">$149.000</b></div>
                   </div>
                   <a class="gato-cta" id="gato-order-btn" href="#" aria-disabled="true" tabindex="-1">
@@ -284,7 +284,7 @@
       </div>
 
       <!-- Desarrollo Web — mockup real de Koyam (2 ventanas), texto en columna fija -->
-      <div class="narrative-block narrative-block--reverse narrative-block--wide">
+      <div class="narrative-block narrative-block--reverse narrative-block--wide" data-reveal>
         <div class="narrative-visual">
           <div class="koyam-embed">
             <div class="koyam-browser">
@@ -412,15 +412,15 @@
       </div>
 
       <!-- Auditoría UX — texto izq, mockup real der (estilo Creacort, dominio ficticio) -->
-      <div class="narrative-block narrative-block--wide">
+      <div class="narrative-block narrative-block--wide" data-reveal>
         <div class="narrative-text">
           <span class="narrative-label">Auditoría</span>
           <h3>Descubre dónde pierdes conversiones</h3>
-          <p>Encontramos exactamente dónde se pierde la atención, la confianza y la conversión en tu plataforma. Diagnóstico concreto, entregable en días, plan de acción inmediato.</p>
+          <p>Encontramos exactamente dónde se pierde la atención, la confianza y la conversión en tu plataforma — y te dejamos un plan priorizado de qué corregir primero, con la tecnología que corresponde a cada caso. Diagnóstico concreto, entregable en días.</p>
           <div class="servicio-tags">
             <span class="servicio-tag">Revisión de uso</span>
             <span class="servicio-tag">Flujos de usuario</span>
-            <span class="servicio-tag">Reporte accionable</span>
+            <span class="servicio-tag">Roadmap priorizado</span>
           </div>
         </div>
         <div class="narrative-visual">
@@ -441,23 +441,24 @@
               <h4 class="cc-title">Detectar dónde se <span class="cc-accent">pierden las conversiones</span></h4>
 
               <div class="cc-funnel">
-                <div class="cc-funnel-row" style="--w:100%">
+                <div class="cc-funnel-row" style="--w:100%; --t:.16">
                   <span class="cc-funnel-label">Visitantes</span>
                   <span class="cc-funnel-value">100%</span>
                 </div>
-                <div class="cc-funnel-row cc-funnel-row--flag" style="--w:87%">
+                <div class="cc-funnel-row cc-funnel-row--flag" style="--w:72%; --t:.11; --fl:102.78%">
                   <span class="cc-funnel-label">Interacción</span>
                   <span class="cc-funnel-value">68%</span>
                   <span class="cc-flag">Navegación confusa</span>
                 </div>
-                <div class="cc-funnel-row cc-funnel-row--flag" style="--w:74%">
+                <div class="cc-funnel-row cc-funnel-row--flag" style="--w:58%; --t:.07; --fl:127.59%">
                   <span class="cc-funnel-label">Consideración</span>
                   <span class="cc-funnel-value">41%</span>
                   <span class="cc-flag">CTA oculto</span>
                 </div>
-                <div class="cc-funnel-row" style="--w:50%">
+                <div class="cc-funnel-row cc-funnel-row--flag" style="--w:36%; --t:.03; --fl:205.56%">
                   <span class="cc-funnel-label">Conversión</span>
                   <span class="cc-funnel-value">18%</span>
+                  <span class="cc-flag">Checkout complejo</span>
                 </div>
               </div>
 
@@ -467,85 +468,57 @@
         </div>
       </div>
 
-      <!-- Estrategia Digital — mockup real (roadmap/timeline), texto der -->
-      <div class="narrative-block narrative-block--reverse narrative-block--wide">
+      <!-- Automatización — mockup ilustrativo (mensaje dispara flujo automático), texto der -->
+      <div class="narrative-block narrative-block--reverse narrative-block--wide" data-reveal>
         <div class="narrative-visual">
-          <div class="rm-embed">
-            <div class="rm-toolbar">
+          <div class="at-embed">
+            <div class="at-toolbar">
               <div class="gato-tl">
                 <span class="gato-dot gato-dot--red"></span>
                 <span class="gato-dot gato-dot--yellow"></span>
                 <span class="gato-dot gato-dot--green"></span>
               </div>
-              <div class="rm-address">
+              <div class="at-address">
                 <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 2l6 2.5v4c0 4-2.6 6.8-6 8-3.4-1.2-6-4-6-8v-4z"/></svg>
-                www.roadmap-demo.test
+                www.automatizacion-demo.test
               </div>
             </div>
-            <div class="rm-body">
-              <span class="rm-eyebrow">Ejemplo · Roadmap</span>
-              <h4 class="rm-title">Crear un sitio web simple</h4>
+            <div class="at-body">
+              <span class="at-eyebrow">Ejemplo · Flujo automático</span>
+              <h4 class="at-title">Un mensaje <span class="at-accent">activa todo el proceso</span></h4>
 
-              <div class="rm-cal">
-                <div class="rm-cal-head">
-                  <div>Fase</div>
-                  <div>3 NOV</div>
-                  <div>10 NOV</div>
-                  <div>17 NOV</div>
-                  <div>24 NOV</div>
-                  <div>1 DIC</div>
+              <div class="at-flow">
+                <div class="at-node">
+                  <span class="at-node__ic"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 5.5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H8l-4 3v-3H5a2 2 0 0 1-2-2v-6z"/></svg></span>
+                  <b>Mensaje recibido</b>
+                  <span>WhatsApp</span>
                 </div>
-
-                <div class="rm-cal-row">
-                  <div class="rm-cal-row-label"><b>Diagnóstico</b><span>Sem. 1</span></div>
-                  <div class="rm-cal-track">
-                    <div></div><div></div><div></div><div></div><div></div>
-                    <div class="rm-bar" style="left:0%; width:20%;">Diagnóstico</div>
-                  </div>
+                <div class="at-arrow"><svg width="20" height="10" viewBox="0 0 20 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h15M12 1l4 4-4 4"/></svg></div>
+                <div class="at-node">
+                  <span class="at-node__ic"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4.5" width="14" height="12" rx="1.5"/><path d="M3 8h14M7 2.5v3M13 2.5v3"/></svg></span>
+                  <b>Verifica disponibilidad</b>
+                  <span>Consulta agenda</span>
                 </div>
-
-                <div class="rm-cal-row">
-                  <div class="rm-cal-row-label"><b>Diseño</b><span>Sem. 2</span></div>
-                  <div class="rm-cal-track">
-                    <div></div><div></div><div></div><div></div><div></div>
-                    <div class="rm-bar" style="left:20%; width:20%;">Diseño</div>
-                  </div>
-                </div>
-
-                <div class="rm-cal-row">
-                  <div class="rm-cal-row-label"><b>Desarrollo</b><span>Sem. 3–4</span></div>
-                  <div class="rm-cal-track">
-                    <div></div><div></div><div></div><div></div><div></div>
-                    <div class="rm-bar" style="left:40%; width:40%;">Desarrollo</div>
-                  </div>
-                </div>
-
-                <div class="rm-cal-row">
-                  <div class="rm-cal-row-label"><b>Lanzamiento</b><span>Sem. 5</span></div>
-                  <div class="rm-cal-track">
-                    <div></div><div></div><div></div><div></div><div></div>
-                    <div class="rm-bar rm-bar--accent" style="left:80%; width:20%;">Live</div>
-                  </div>
+                <div class="at-arrow"><svg width="20" height="10" viewBox="0 0 20 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5h15M12 1l4 4-4 4"/></svg></div>
+                <div class="at-node at-node--accent">
+                  <span class="at-node__ic"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg></span>
+                  <b>Confirma y agenda</b>
+                  <span>Sin intervención</span>
                 </div>
               </div>
 
-              <div class="rm-impacts">
-                <div><b>Diagnóstico</b> — define el alcance real, evita construir de más</div>
-                <div><b>Diseño</b> — cliente valida antes de programar una línea</div>
-                <div><b>Desarrollo</b> — sitio funcional, no maqueta</div>
-                <div><b>Lanzamiento</b> — listo para recibir visitas</div>
-              </div>
+              <p class="at-caption">Corre solo — nadie lo dispara a mano</p>
             </div>
           </div>
         </div>
         <div class="narrative-text">
-          <span class="narrative-label">Estrategia Digital</span>
-          <h3>Antes de comprometer presupuesto, sabes en qué orden construir</h3>
-          <p>Identificamos qué construir primero y en qué orden, con la tecnología que mejor se ajusta a tu negocio — para que cada decisión tenga respaldo antes de ejecutar.</p>
+          <span class="narrative-label">Automatización</span>
+          <h3>Que las tareas repetitivas se resuelvan solas</h3>
+          <p>Conectamos tus herramientas — WhatsApp, tu sistema, tus planillas — para que lo repetitivo se resuelva sin que nadie tenga que hacerlo a mano. Cada automatización se ajusta a las reglas reales de tu negocio, no a un flujo genérico.</p>
           <div class="servicio-tags">
-            <span class="servicio-tag">Roadmap</span>
-            <span class="servicio-tag">Evaluación técnica</span>
-            <span class="servicio-tag">Mentoría</span>
+            <span class="servicio-tag">WhatsApp</span>
+            <span class="servicio-tag">Flujos automáticos</span>
+            <span class="servicio-tag">Integraciones</span>
           </div>
         </div>
       </div>
@@ -558,7 +531,7 @@
         <div class="framework-layout">
 
           <div class="framework-content">
-            <div class="framework-header">
+            <div class="framework-header" data-reveal>
               <span class="section-label">El Framework</span>
               <h2>El sistema que hace posible cada entrega</h2>
             </div>
@@ -643,30 +616,30 @@
       <div class="section-inner container">
         <span class="section-label">Estructura</span>
 
-        <div class="estudio-intro">
+        <div class="estudio-intro" data-reveal>
           <h2>Detrás del framework</h2>
           <p>Estrategia comercial, marketing, diseño de producto e ingeniería. Cuatro personas, un mismo framework — sin intermediarios entre el diagnóstico y la entrega.</p>
         </div>
 
         <span class="equipo-titulo">Equipo</span>
-        <div class="estudio-team">
+        <div class="estudio-team" data-reveal-group>
 
-          <div class="persona-card">
+          <div class="persona-card" data-reveal-item>
             <span class="persona-name">Francisco Orellana</span>
             <span class="persona-role">CEO &amp; Framework Architect</span>
           </div>
 
-          <div class="persona-card">
+          <div class="persona-card" data-reveal-item>
             <span class="persona-name">Anelisse Sáez</span>
             <span class="persona-role">Directora de Diseño</span>
           </div>
 
-          <div class="persona-card">
+          <div class="persona-card" data-reveal-item>
             <span class="persona-name">Ariel Sáez</span>
             <span class="persona-role">Director Comercial</span>
           </div>
 
-          <div class="persona-card">
+          <div class="persona-card" data-reveal-item>
             <span class="persona-name">Madelen Sanzana</span>
             <span class="persona-role">Directora de Marketing</span>
           </div>
@@ -684,14 +657,14 @@
     <!-- FAQ -->
     <section id="faq">
       <div class="section-inner container">
-        <div class="section-header">
+        <div class="section-header" data-reveal>
           <span class="section-label">FAQ</span>
           <h2>Preguntas frecuentes</h2>
           <p class="section-sub">Lo que suelen preguntarnos antes de escribir.</p>
         </div>
-        <div class="faq-list">
+        <div class="faq-list" data-reveal-group>
 
-          <div class="faq-item">
+          <div class="faq-item" data-reveal-item>
             <button class="faq-q" aria-expanded="false" aria-controls="faq-a-0">
               <span>¿Sirve si hoy llevo todo en Excel o WhatsApp?</span>
               <span class="faq-icon" aria-hidden="true"></span>
@@ -703,7 +676,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item" data-reveal-item>
             <button class="faq-q" aria-expanded="false" aria-controls="faq-a-1">
               <span>¿Olivacraft es una agencia, un freelancer o un software?</span>
               <span class="faq-icon" aria-hidden="true"></span>
@@ -715,7 +688,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item" data-reveal-item>
             <button class="faq-q" aria-expanded="false" aria-controls="faq-a-2">
               <span>¿Qué es OLIVA y por qué debería importarme?</span>
               <span class="faq-icon" aria-hidden="true"></span>
@@ -727,7 +700,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item" data-reveal-item>
             <button class="faq-q" aria-expanded="false" aria-controls="faq-a-3">
               <span>¿Necesito entender de IA para trabajar con ustedes?</span>
               <span class="faq-icon" aria-hidden="true"></span>
@@ -739,7 +712,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item" data-reveal-item>
             <button class="faq-q" aria-expanded="false" aria-controls="faq-a-4">
               <span>¿Por dónde comienzo si no sé bien qué necesito?</span>
               <span class="faq-icon" aria-hidden="true"></span>
@@ -751,7 +724,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item" data-reveal-item>
             <button class="faq-q" aria-expanded="false" aria-controls="faq-a-5">
               <span>¿El código queda en mis manos al terminar el proyecto?</span>
               <span class="faq-icon" aria-hidden="true"></span>
@@ -763,7 +736,7 @@
             </div>
           </div>
 
-          <div class="faq-item">
+          <div class="faq-item" data-reveal-item>
             <button class="faq-q" aria-expanded="false" aria-controls="faq-a-6">
               <span>¿En qué se diferencia de contratar una agencia grande?</span>
               <span class="faq-icon" aria-hidden="true"></span>
@@ -782,7 +755,7 @@
     <!-- CONTACTO -->
     <section id="contacto">
       <div class="section-inner container">
-        <div class="section-header">
+        <div class="section-header" data-reveal>
           <span class="section-label">Contacto</span>
           <h2>¿Tienes un proyecto en mente?</h2>
           <p class="section-sub">Cuéntanos qué quieres construir. Respondemos en menos de 24 horas — directamente nosotros, no un asistente.</p>
@@ -854,6 +827,7 @@
           <span class="wm-oliva">Oliva</span><span class="wm-craft">craft</span><span class="wm-dot">·</span>
         </a>
         <p>Consultora tecnológica boutique. Diseño, código y sistemas — impulsados por OLIVA.</p>
+        <p class="footer-brand__meta">Santiago, Chile · GMT-3</p>
       </div>
 
       <div class="footer-col">
@@ -863,7 +837,6 @@
           <li><a href="#framework">El Framework</a></li>
           <li><a href="#estructura">Estructura</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
 
@@ -887,6 +860,7 @@
     </div>
     <div class="footer-bottom container">
       <p>© 2026 Olivacraft. Todos los derechos reservados.</p>
+      <p class="footer-credit">Diseñado y construido con OLIVA Framework</p>
     </div>
   </footer>
 

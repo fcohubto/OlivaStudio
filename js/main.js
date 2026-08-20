@@ -41,29 +41,82 @@ if (toggle && mobileNav) {
 }
 
 
-/* ── Nav — sección activa al hacer scroll (scrollspy) ── */
+/* ── Navbar — se solidifica al bajar del hero (detalle premium sutil) ── */
+const siteHeader = document.querySelector('.site-header');
+
+if (siteHeader) {
+  let ticking = false;
+  const updateHeaderState = () => {
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 50);
+    ticking = false;
+  };
+  const onScroll = () => {
+    if (!ticking) {
+      requestAnimationFrame(updateHeaderState);
+      ticking = true;
+    }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+
+/* ── Nav — sección activa al hacer scroll (scrollspy) + indicador que se desliza ── */
 const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const navEl = document.querySelector('.nav');
+const navIndicator = document.querySelector('.nav-indicator');
 
 if (navLinks.length) {
   const sections = [...navLinks]
     .map(link => document.querySelector(link.getAttribute('href')))
     .filter(Boolean);
 
-  const setActiveLink = id => {
-    navLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-    });
+  let activeLink = null;
+
+  const positionIndicator = () => {
+    if (!navIndicator || !navEl) return;
+    if (!activeLink) {
+      navIndicator.classList.remove('is-active');
+      return;
+    }
+    const navRect  = navEl.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+    const inset = 12; // var(--sp-3), mismo inset que usaba el ::after estático
+    navIndicator.style.width = `${linkRect.width - inset * 2}px`;
+    navIndicator.style.transform = `translateX(${linkRect.left - navRect.left + inset}px)`;
+    navIndicator.style.top = `${linkRect.bottom - navRect.top - 4}px`;
+    navIndicator.classList.add('is-active');
   };
+
+  const setActiveLink = id => {
+    activeLink = null;
+    navLinks.forEach(link => {
+      const isActive = Boolean(id) && link.getAttribute('href') === `#${id}`;
+      link.classList.toggle('active', isActive);
+      if (isActive) activeLink = link;
+    });
+    positionIndicator();
+  };
+
+  // Set en vez de "primer entry que intersecta": evita que el indicador quede
+  // pegado en una sección si el usuario salta rápido (click de nav, anchor) y el
+  // observer no vuelve a disparar para la sección real donde termina el scroll.
+  const intersectingIds = new Set();
 
   const spyObserver = new IntersectionObserver(
     entries => {
-      const visible = entries.find(entry => entry.isIntersecting);
-      if (visible) setActiveLink(visible.target.id);
+      entries.forEach(entry => {
+        if (entry.isIntersecting) intersectingIds.add(entry.target.id);
+        else intersectingIds.delete(entry.target.id);
+      });
+      const current = sections.find(section => intersectingIds.has(section.id));
+      setActiveLink(current ? current.id : null);
     },
     { rootMargin: '-64px 0px -60% 0px' }
   );
 
   sections.forEach(section => spyObserver.observe(section));
+  window.addEventListener('resize', positionIndicator);
 }
 
 
@@ -87,6 +140,26 @@ if (frameworkSteps.length && frameworkNodes.length) {
   );
 
   frameworkSteps.forEach(step => frameworkObserver.observe(step));
+}
+
+
+/* ── Scroll-reveal — headers y bloques entran al alcanzar el viewport ── */
+const revealTargets = document.querySelectorAll('[data-reveal], [data-reveal-group]');
+
+if (revealTargets.length) {
+  const revealObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  revealTargets.forEach(el => revealObserver.observe(el));
 }
 
 

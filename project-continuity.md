@@ -1,6 +1,44 @@
 # project-continuity.md — olivacraft.com 2.0
 
-## ESTADO ACTUAL — 2026-08-19, QA de código (último paso antes de que Anelisse tome el proyecto) — leer esto primero
+## CIERRE DE SESIÓN — 2026-08-20 (leer esto primero al retomar)
+
+Sesión de refinamiento visual cruzado con Ane (Directora de Diseño) y Gemini como segunda opinión, cada hallazgo verificado contra el código real antes de aplicar (mismo criterio de siempre). Commiteado, sin push.
+
+**Aplicado hoy:**
+- **Footer:** contraste WCAG AA corregido (headers/descripción/copyright estaban entre 1.75:1 y 4.45:1, ahora todos ≥7:1), "Contacto" duplicado eliminado de Navegación, ubicación agregada ("Santiago, Chile · GMT-3"), crédito "Diseñado y construido con OLIVA Framework", margen de seguridad para que el botón de WhatsApp no tape el footer al hacer scroll máximo.
+- **Mockup Auditoría:** degradado de morado proporcional al valor de cada barra del embudo, badges de alerta en pill alineados (se agregó un 3er hallazgo "Check-out complejo"), barras más grandes a pedido de Ane. **Bug real corregido:** `.cc-funnel` tenía `max-width:65%` heredado de una versión anterior — la barra al 100% nunca llegaba al padding real de la tarjeta pese a decir "100%".
+- **Capacidad Automatización:** reemplazó a Estrategia Digital — nuevo mockup de flujo de nodos (mensaje → verifica → confirma) con íconos SVG propios, copy y tags nuevos.
+- **Panel GATO:** todas las fuentes -2px (token local `--g-text-xs`, sin tocar el `--text-xs` global compartido con otros componentes), "Despacho a regiones" eliminado del desglose, íconos `.gato-tree-icn` re-centrados (bug real: las plataformas del árbol tenían el rect desplazado a la derecha dentro del viewBox, asimétrico respecto al tronco), badge "Recomendado" movido a la derecha para no tapar el nombre, tags de "Tu Configuración" con `flex-wrap` (se rompían — texto partido en 2 líneas — al seleccionar los 3 accesorios a la vez), "Total Estimado" +20%.
+- **Hero:** hover interactivo en el diagrama (Excel/WhatsApp/Papel → panel) — la línea del chip se ilumina con glow al pasar el mouse, CSS puro con `:has()`, sin JS adicional para el efecto en sí.
+- **Navegación premium:** navbar con blur/opacidad progresiva al hacer scroll (transparente sobre el hero, sólida después), indicador de sección que se desliza entre links (`transform: translateX` + `width`, calculado con `getBoundingClientRect()`) en vez de saltar, scroll-reveal escalonado (`IntersectionObserver` + `prefers-reduced-motion`) en headers y bloques de toda la página. **Bug real corregido de paso:** el scrollspy original (`entries.find` sobre el primer intersecting) podía quedar pegado en la última sección detectada si nada intersectaba — se cambió a un `Set` que trackea intersecciones reales.
+- Línea residual bajo "Lo que construimos" eliminada (`.narrative-block:first-of-type` heredaba el `border-top` pensado para separar filas entre sí).
+
+**Sesión registrada en OLIVA OS** (`Interno/oliva-os/data/sessions.js`, id `2026-08-20-001`).
+
+**Sin pendientes explícitos nuevos** — todo lo trabajado hoy quedó cerrado y verificado en `localhost:8001`. Los pendientes de la sesión anterior (formulario `/send.php`, deploy a manos de Anelisse) siguen abiertos, ver sección de abajo.
+
+---
+
+## CIERRE DE SESIÓN — 2026-08-19 (leer esto primero al retomar)
+
+Francisco: "dejamos para siguiente sesión revisar en detalle la auditoría, y pasar el diseño final a deploy." Sesión de hoy cerrada con commit (`d8201cf`, sin push) y con un antes/después considerado relevante por Francisco entre el sitio previo y el actual.
+
+**Siguiente sesión, en este orden:**
+1. **Revisar en detalle el informe de auditoría de contenido/UX/navegación** (artifact publicado esta sesión, `https://claude.ai/code/artifact/48a98ac8-4ea0-4e26-b388-6fb4759885b6`) — empezar por el hallazgo crítico: confirmar en producción si el formulario de contacto realmente envía algo (`send.php` no existe en el repo).
+2. **Pasar el diseño final a deploy** — probablemente el punto en que el proyecto pasa a manos de Anelisse (Directora de Diseño) para publicarlo. No hay instrucciones de deploy dadas todavía — retomar preguntando el flujo exacto (¿mismo hosting? ¿ella hace el push? ¿hay un checklist previo?).
+
+**Pendiente explícito, todavía sin resolver, señalado en la auditoría — no decidir sin Francisco:**
+- Formulario de contacto: verificar si `/send.php` existe y funciona en producción (crítico).
+- Meta description promete "automatización IA" sin capacidad dedicada visible.
+- 7 opciones del formulario vs. 4 capacidades mostradas en la página.
+- Tensión "sin subcontrataciones" ya registrada en memoria — no resuelta.
+- Footer: FAQ/copy de FAQ con 2da mirada aún pendiente de definir alcance (arrastrado de sesiones anteriores).
+
+**Sin commits nuevos desde el último cierre** (`d8201cf`, rama 1 commit adelante de `origin/main`, sin push).
+
+---
+
+## ESTADO — 2026-08-19, QA de código (último paso antes de que Anelisse tome el proyecto)
 
 Francisco pidió una QA general a nivel de código como **último paso antes del handoff a Anelisse (Directora de Diseño) para deploy**: eliminar valores sueltos, dar precisión al `:root`, y más. Alcance: `css/styles.css`, `index.html`, `404.html`.
 
